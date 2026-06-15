@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💍 Il Nostro Matrimonio — Maggio 2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f2;
+    --ivory: #f5efe6;
+    --rose: #c9857a;
+    --rose-light: #e8c4bc;
+    --rose-pale: #f9edea;
+    --sage: #7a9e7e;
+    --sage-light: #c4d9c6;
+    --gold: #c4a35a;
+    --gold-light: #f0e4c4;
+    --text: #2c2420;
+    --text-muted: #7a6e68;
+    --border: #e8ddd4;
+    --shadow: 0 2px 20px rgba(44,36,32,0.08);
+    --shadow-sm: 0 1px 6px rgba(44,36,32,0.06);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #2c2420 0%, #4a3830 60%, #3d2e28 100%);
+    padding: 36px 40px 32px; position: relative; overflow: hidden;
+  }
+  header::before {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(201,133,122,0.15) 0%, transparent 70%); pointer-events: none;
+  }
+  header::after {
+    content: ''; position: absolute; bottom: -40px; left: 20%;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(196,163,90,0.1) 0%, transparent 70%); pointer-events: none;
+  }
+  .header-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap; position: relative; z-index: 1;
+  }
+  .header-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--rose-light); margin-bottom: 8px; }
+  .header-main { font-family: 'Playfair Display', serif; font-size: 36px; color: #fff; line-height: 1.1; }
+  .header-main em { color: var(--rose-light); font-style: italic; }
+  .header-date { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 6px; font-weight: 300; }
+  .header-stats { display: flex; gap: 14px; flex-wrap: wrap; }
+  .stat-box {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 12px 18px; text-align: center; min-width: 86px;
+  }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 22px; color: #fff; display: block; line-height: 1; }
+  .stat-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 4px; display: block; }
+  .stat-box.rose .stat-num { color: var(--rose-light); }
+  .stat-box.gold .stat-num { color: var(--gold-light); }
+  .stat-box.sage .stat-num { color: #a8d4ab; }
+
+  /* COUNTDOWN */
+  .countdown-bar { background: var(--ivory); border-bottom: 1px solid var(--border); padding: 12px 40px; }
+  .countdown-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--text-muted); }
+  .countdown-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rose); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.7); } }
+  #countdown-text strong { color: var(--rose); }
+
+  /* PROGRESS BAR */
+  .progress-section { background: #fff; border-bottom: 1px solid var(--border); padding: 16px 40px; }
+  .progress-inner { max-width: 1200px; margin: 0 auto; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+  .progress-track { background: var(--border); border-radius: 100px; height: 8px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--rose), var(--gold)); border-radius: 100px; transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
+
+  /* BUDGET SUMMARY PANEL */
+  .budget-panel {
+    background: #fff; border-bottom: 1px solid var(--border); padding: 0 40px;
+    overflow: hidden; transition: max-height 0.4s ease;
+  }
+  .budget-panel.collapsed { max-height: 0; padding-top: 0; padding-bottom: 0; }
+  .budget-panel-inner { max-width: 1200px; margin: 0 auto; padding: 24px 0; }
+  .budget-panel-title {
+    font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .budget-panel-title span { font-size: 13px; font-weight: 400; font-family: 'DM Sans', sans-serif; color: var(--text-muted); }
+
+  /* BUDGET TOP CARDS */
+  .budget-totals { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .budget-total-card {
+    flex: 1; min-width: 160px; background: var(--ivory); border-radius: 12px;
+    border: 1px solid var(--border); padding: 16px 20px;
+  }
+  .btc-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+  .btc-value { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--text); }
+  .btc-value.gold { color: var(--gold); }
+  .btc-value.rose { color: var(--rose); }
+  .btc-value.sage { color: var(--sage); }
+  .btc-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+  /* BUDGET BY CATEGORY TABLE */
+  .budget-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .budget-table th {
+    text-align: left; padding: 8px 12px; font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--text-muted); border-bottom: 2px solid var(--border);
+    font-weight: 500;
+  }
+  .budget-table th:not(:first-child) { text-align: right; }
+  .budget-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .budget-table td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+  .budget-table tr:last-child td { border-bottom: none; }
+  .budget-table tr:hover td { background: var(--rose-pale); }
+  .budget-cat-name { display: flex; align-items: center; gap: 8px; font-weight: 500; }
+  .budget-bar-cell { width: 120px; }
+  .mini-bar-track { background: var(--border); border-radius: 100px; height: 6px; }
+  .mini-bar-fill { height: 100%; border-radius: 100px; background: var(--rose); transition: width 0.4s; }
+  .budget-diff.over { color: #c0392b; font-weight: 500; }
+  .budget-diff.under { color: var(--sage); }
+  .budget-diff.zero { color: var(--text-muted); }
+  .total-row td { font-weight: 600; background: var(--ivory); font-size: 14px; }
+
+  .sync-status {
+    font-size: 11px; padding: 4px 12px; border-radius: 100px;
+    font-weight: 500; letter-spacing: 0.5px;
+  }
+  .sync-status.ok { background: rgba(122,158,126,0.2); color: #a8d4ab; }
+  .sync-status.loading { background: rgba(196,163,90,0.2); color: var(--gold-light); }
+  .sync-status.warn { background: rgba(201,133,122,0.2); color: var(--rose-light); }
+  .toggle-budget-btn {
+    background: none; border: 1px solid var(--border); border-radius: 100px;
+    padding: 6px 16px; font-family: 'DM Sans', sans-serif; font-size: 12px;
+    color: var(--text-muted); cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }
+  .toggle-budget-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .toggle-budget-btn.active { background: var(--gold-light); border-color: var(--gold); color: #8a6a20; }
+
+  /* MAIN LAYOUT */
+  .main { max-width: 1200px; margin: 0 auto; padding: 32px 40px; }
+
+  /* TOOLBAR */
+  .toolbar { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; align-items: center; }
+  .filter-btn {
+    padding: 7px 16px; border-radius: 100px; border: 1.5px solid var(--border);
+    background: #fff; font-family: 'DM Sans', sans-serif; font-size: 13px;
+    cursor: pointer; color: var(--text-muted); transition: all 0.2s; white-space: nowrap;
+  }
+  .filter-btn:hover { border-color: var(--rose-light); color: var(--rose); }
+  .filter-btn.active { background: var(--rose); border-color: var(--rose); color: #fff; }
+  .toolbar-spacer { flex: 1; }
+  .btn-export {
+    padding: 8px 16px; background: transparent; color: var(--text-muted);
+    border: 1.5px solid var(--border); border-radius: 100px;
+    font-family: 'DM Sans', sans-serif; font-size: 12px; cursor: pointer;
+    transition: all 0.2s; display: flex; align-items: center; gap: 5px; white-space: nowrap;
+  }
+  .btn-export:hover { border-color: var(--rose); color: var(--rose); }
+
+  /* CATEGORIES GRID */
+  .categories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px; }
+
+  /* CATEGORY CARD */
+  .category-card {
+    background: #fff; border-radius: 16px; border: 1px solid var(--border);
+    overflow: hidden; box-shadow: var(--shadow-sm); transition: box-shadow 0.2s;
+  }
+  .category-card:hover { box-shadow: var(--shadow); }
+  .category-card.hidden { display: none; }
+
+  .cat-header {
+    padding: 16px 20px 12px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px;
+    cursor: pointer; user-select: none; background: var(--ivory);
+  }
+  .cat-emoji { font-size: 20px; flex-shrink: 0; }
+  .cat-title-wrap { flex: 1 }
+  .cat-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; }
+  .cat-meta { display: flex; gap: 10px; margin-top: 3px; align-items: center; }
+  .cat-progress-mini { font-size: 11px; color: var(--text-muted); }
+  .cat-budget-mini { font-size: 11px; color: var(--gold); font-weight: 500; }
+  .cat-chevron { font-size: 12px; color: var(--text-muted); transition: transform 0.3s; }
+  .cat-header.collapsed .cat-chevron { transform: rotate(-90deg); }
+
+  .cat-progress-bar { height: 3px; background: var(--border); }
+  .cat-progress-fill { height: 100%; background: var(--rose); transition: width 0.5s ease; }
+  .cat-body { padding: 6px 0 12px; }
+
+  /* TASK ROW */
+  .task-row {
+    padding: 10px 20px; display: flex; flex-direction: column;
+    border-bottom: 1px solid rgba(232,221,212,0.5); transition: background 0.15s;
+  }
+  .task-row:last-child { border-bottom: none; }
+  .task-row:hover { background: var(--rose-pale); }
+  .task-row.done .task-title { text-decoration: line-through; color: var(--text-muted); }
+
+  .task-main { display: flex; align-items: center; gap: 10px; }
+
+  .task-check {
+    width: 20px; height: 20px; border-radius: 6px; border: 2px solid var(--rose-light);
+    background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: all 0.2s;
+  }
+  .task-check:hover { border-color: var(--rose); }
+  .task-check.checked { background: var(--rose); border-color: var(--rose); }
+  .task-check.checked::after { content: '✓'; color: #fff; font-size: 12px; font-weight: 600; line-height: 1; }
+
+  .task-title { flex: 1; font-size: 14px; color: var(--text); cursor: pointer; line-height: 1.4; }
+
+  .task-price-badge {
+    font-size: 11px; color: var(--gold); background: var(--gold-light);
+    padding: 2px 8px; border-radius: 100px; font-weight: 500; white-space: nowrap;
+    display: none;
+  }
+  .task-price-badge.visible { display: inline; }
+
+  .task-priority { font-size: 10px; padding: 2px 8px; border-radius: 100px; font-weight: 500; letter-spacing: 0.5px; white-space: nowrap; }
+  .priority-high { background: #fde8e8; color: #c0392b; }
+  .priority-mid { background: var(--gold-light); color: #8a6a20; }
+  .priority-low { background: var(--sage-light); color: #3d6b41; }
+
+  .task-toggle-btn {
+    background: none; border: none; cursor: pointer; font-size: 13px;
+    color: var(--text-muted); padding: 2px 4px; border-radius: 4px;
+    transition: all 0.15s; flex-shrink: 0;
+  }
+  .task-toggle-btn:hover { background: var(--border); color: var(--text); }
+
+  .task-details {
+    margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border);
+    display: none; flex-direction: column; gap: 10px;
+  }
+  .task-details.open { display: flex; }
+
+  .detail-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; display: block; }
+
+  .task-notes {
+    width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text);
+    resize: vertical; min-height: 56px; background: var(--cream); transition: border-color 0.2s; outline: none;
+  }
+  .task-notes:focus { border-color: var(--rose-light); background: #fff; }
+  .task-notes::placeholder { color: #bbb; }
+
+  /* BUDGET FIELDS */
+  .budget-fields { display: flex; gap: 10px; flex-wrap: wrap; }
+  .budget-field { flex: 1; min-width: 120px; }
+  .budget-input-wrap { display: flex; align-items: center; border: 1px solid var(--border); border-radius: 8px; background: var(--cream); overflow: hidden; transition: border-color 0.2s; }
+  .budget-input-wrap:focus-within { border-color: var(--gold); background: #fff; }
+  .budget-currency { padding: 0 10px; font-size: 13px; color: var(--text-muted); border-right: 1px solid var(--border); height: 36px; display: flex; align-items: center; background: var(--ivory); }
+  .budget-input {
+    border: none; outline: none; padding: 8px 10px; font-family: 'DM Sans', sans-serif;
+    font-size: 13px; background: transparent; width: 100%; color: var(--text);
+  }
+  .budget-input::placeholder { color: #bbb; }
+  .budget-saldo {
+    flex: 1; min-width: 120px; background: var(--ivory); border-radius: 8px;
+    padding: 8px 12px; display: flex; flex-direction: column; justify-content: center;
+  }
+  .saldo-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
+  .saldo-value { font-size: 15px; font-weight: 600; margin-top: 2px; }
+  .saldo-value.positive { color: var(--sage); }
+  .saldo-value.negative { color: #c0392b; }
+  .saldo-value.zero { color: var(--text-muted); }
+
+  .task-link-row { display: flex; gap: 8px; align-items: center; }
+  .task-link {
+    flex: 1; border: 1px solid var(--border); border-radius: 8px; padding: 7px 12px;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text);
+    background: var(--cream); outline: none; transition: border-color 0.2s;
+  }
+  .task-link:focus { border-color: var(--rose-light); background: #fff; }
+  .task-link::placeholder { color: #bbb; }
+  .open-link-btn {
+    padding: 7px 12px; background: var(--text); color: #fff; border: none;
+    border-radius: 8px; font-size: 12px; cursor: pointer; white-space: nowrap; transition: background 0.2s;
+  }
+  .open-link-btn:hover { background: var(--rose); }
+
+  /* ADD TASK */
+  .add-task-row { padding: 10px 20px 4px; border-top: 1px dashed var(--border); margin-top: 4px; }
+  .add-task-form { display: none; gap: 8px; align-items: center; }
+  .add-task-form.open { display: flex; }
+  .add-task-input {
+    flex: 1; border: 1px solid var(--border); border-radius: 8px; padding: 7px 12px;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; outline: none;
+    transition: border-color 0.2s; background: var(--cream);
+  }
+  .add-task-input:focus { border-color: var(--rose-light); background: #fff; }
+  .priority-select {
+    border: 1px solid var(--border); border-radius: 8px; padding: 7px 10px;
+    font-family: 'DM Sans', sans-serif; font-size: 12px; outline: none;
+    background: var(--cream); cursor: pointer; color: var(--text);
+  }
+  .btn-confirm-task { padding: 7px 14px; background: var(--rose); color: #fff; border: none; border-radius: 8px; font-size: 13px; cursor: pointer; }
+  .btn-confirm-task:hover { background: #b57269; }
+  .btn-add-task {
+    display: flex; align-items: center; gap: 6px; background: none; border: none;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--rose);
+    cursor: pointer; padding: 4px 0; opacity: 0.7; transition: opacity 0.2s;
+  }
+  .btn-add-task:hover { opacity: 1; }
+
+  /* TOAST */
+  #save-toast {
+    position: fixed; bottom: 30px; right: 30px; background: var(--text); color: #fff;
+    padding: 10px 20px; border-radius: 100px; font-size: 13px; opacity: 0;
+    transform: translateY(10px); transition: all 0.3s; pointer-events: none; z-index: 100;
+  }
+  #save-toast.show { opacity: 1; transform: translateY(0); }
+
+  /* ====== TABS ====== */
+  .main-tabs { display: flex; gap: 4px; margin-bottom: 28px; border-bottom: 2px solid var(--border); }
+  .tab-btn {
+    padding: 10px 22px; border: none; background: none; font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500; color: var(--text-muted); cursor: pointer;
+    border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .tab-btn:hover { color: var(--rose); }
+  .tab-btn.active { color: var(--rose); border-bottom-color: var(--rose); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ====== INVITATI STYLES ====== */
+  .inv-summary-bar {
+    display: flex; gap: 14px; margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .inv-sum-card {
+    flex: 1; min-width: 120px; background: #fff; border-radius: 12px;
+    border: 1px solid var(--border); padding: 14px 18px; text-align: center;
+  }
+  .inv-sum-num { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--text); display: block; }
+  .inv-sum-num.rose { color: var(--rose); }
+  .inv-sum-num.sage { color: var(--sage); }
+  .inv-sum-num.gold { color: var(--gold); }
+  .inv-sum-num.muted { color: var(--text-muted); }
+  .inv-sum-label { font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; display: block; }
+
+  .inv-toolbar { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; align-items: center; }
+  .inv-filter-btn {
+    padding: 6px 14px; border-radius: 100px; border: 1.5px solid var(--border);
+    background: #fff; font-family: 'DM Sans', sans-serif; font-size: 12px;
+    cursor: pointer; color: var(--text-muted); transition: all 0.2s;
+  }
+  .inv-filter-btn:hover { border-color: var(--rose-light); color: var(--rose); }
+  .inv-filter-btn.active { background: var(--rose); border-color: var(--rose); color: #fff; }
+  .inv-search {
+    border: 1.5px solid var(--border); border-radius: 100px; padding: 6px 16px;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; outline: none;
+    background: #fff; width: 220px; transition: border-color 0.2s; color: var(--text);
+  }
+  .inv-search:focus { border-color: var(--rose-light); }
+  .inv-toolbar-spacer { flex: 1; }
+  .btn-add-guest {
+    padding: 8px 18px; background: var(--rose); color: #fff; border: none;
+    border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 13px;
+    cursor: pointer; font-weight: 500; transition: background 0.2s;
+  }
+  .btn-add-guest:hover { background: #b57269; }
+
+  .inv-table-wrap { background: #fff; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow-sm); }
+  .inv-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .inv-table th {
+    text-align: left; padding: 10px 14px; font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--text-muted); border-bottom: 2px solid var(--border);
+    background: var(--ivory); font-weight: 500;
+  }
+  .inv-table td { padding: 10px 14px; border-bottom: 1px solid rgba(232,221,212,0.5); vertical-align: middle; }
+  .inv-table tr:last-child td { border-bottom: none; }
+  .inv-table tr:hover td { background: var(--rose-pale); }
+  .inv-table tr.hidden-row { display: none; }
+
+  .guest-nome { font-weight: 500; color: var(--text); }
+  .guest-type-badge {
+    font-size: 10px; padding: 2px 8px; border-radius: 100px; font-weight: 500; white-space: nowrap;
+  }
+  .type-adulto { background: var(--gold-light); color: #8a6a20; }
+  .type-bambino { background: var(--sage-light); color: #3d6b41; }
+
+  .prob-badge {
+    font-size: 10px; padding: 2px 8px; border-radius: 100px; font-weight: 500; white-space: nowrap;
+  }
+  .prob-alta { background: #e8f5e9; color: #2e7d32; }
+  .prob-media { background: var(--gold-light); color: #8a6a20; }
+  .prob-bassa { background: #fde8e8; color: #c0392b; }
+
+  .status-check { width: 20px; height: 20px; border-radius: 6px; border: 2px solid var(--border); display: inline-flex; align-items: center; justify-content: center; font-size: 11px; cursor: pointer; transition: all 0.2s; }
+  .status-check.on { background: var(--sage); border-color: var(--sage); color: #fff; }
+  .status-check:hover { border-color: var(--sage); }
+
+  .risposta-badge {
+    font-size: 11px; padding: 2px 10px; border-radius: 100px; font-weight: 500; cursor: pointer; transition: all 0.2s;
+  }
+  .risposta-si { background: #e8f5e9; color: #2e7d32; }
+  .risposta-no { background: #fde8e8; color: #c0392b; }
+  .risposta-attesa { background: var(--border); color: var(--text-muted); }
+
+  .btn-edit-guest, .btn-del-guest {
+    background: none; border: none; cursor: pointer; font-size: 14px;
+    padding: 3px 5px; border-radius: 4px; transition: background 0.15s;
+  }
+  .btn-edit-guest:hover { background: var(--gold-light); }
+  .btn-del-guest:hover { background: #fde8e8; }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(44,36,32,0.45);
+    z-index: 200; align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: #fff; border-radius: 20px; padding: 32px; width: 100%; max-width: 520px;
+    box-shadow: 0 20px 60px rgba(44,36,32,0.2); position: relative;
+  }
+  .modal-title { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 24px; }
+  .modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); }
+  .modal-close:hover { color: var(--text); }
+  .modal-field { margin-bottom: 16px; }
+  .modal-label { font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; display: block; }
+  .modal-input, .modal-select {
+    width: 100%; border: 1.5px solid var(--border); border-radius: 10px; padding: 9px 14px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; background: var(--cream);
+    color: var(--text); transition: border-color 0.2s;
+  }
+  .modal-input:focus, .modal-select:focus { border-color: var(--rose-light); background: #fff; }
+  .modal-row { display: flex; gap: 14px; }
+  .modal-row .modal-field { flex: 1; }
+  .modal-actions { display: flex; gap: 10px; margin-top: 24px; justify-content: flex-end; }
+  .btn-modal-cancel { padding: 9px 22px; border: 1.5px solid var(--border); border-radius: 100px; background: none; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; color: var(--text-muted); }
+  .btn-modal-cancel:hover { border-color: var(--rose); color: var(--rose); }
+  .btn-modal-save { padding: 9px 22px; background: var(--rose); color: #fff; border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; font-weight: 500; }
+  .btn-modal-save:hover { background: #b57269; }
+
+  @media (max-width: 700px) {
+    header, .countdown-bar, .progress-section, .budget-panel, .main { padding-left: 16px; padding-right: 16px; }
+    .header-main { font-size: 26px; }
+    .categories-grid { grid-template-columns: 1fr; }
+    .budget-totals { flex-direction: column; }
+    .budget-bar-cell { display: none; }
+    .inv-table th:nth-child(3), .inv-table td:nth-child(3),
+    .inv-table th:nth-child(5), .inv-table td:nth-child(5) { display: none; }
+    .inv-search { width: 140px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-title">
+      <div class="header-eyebrow">✦ Wedding Planner ✦</div>
+      <div class="header-main">Il Nostro <em>Matrimonio</em></div>
+      <div class="header-date">Pescara · 21 Maggio 2027</div>
+    </div>
+    <div class="header-stats">
+      <div class="stat-box rose">
+        <span class="stat-num" id="stat-done">0</span>
+        <span class="stat-label">Completati</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num" id="stat-total">0</span>
+        <span class="stat-label">Totale</span>
+      </div>
+      <div class="stat-box gold">
+        <span class="stat-num" id="stat-budget">—</span>
+        <span class="stat-label">Preventivo €</span>
+      </div>
+      <div class="stat-box sage">
+        <span class="stat-num" id="stat-paid">—</span>
+        <span class="stat-label">Pagato €</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num" id="stat-days">—</span>
+        <span class="stat-label">Giorni</span>
+      </div>
+      <span id="sync-status" class="sync-status loading">⟳ Caricamento…</span>
+    </div>
+  </div>
+</header>
+
+<div class="countdown-bar">
+  <div class="countdown-inner">
+    <div class="countdown-dot"></div>
+    <div id="countdown-text">Calcolo countdown...</div>
+  </div>
+</div>
+
+<div class="progress-section">
+  <div class="progress-inner">
+    <div class="progress-label">
+      <span>Avanzamento attività</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+  </div>
+</div>
+
+<!-- BUDGET PANEL -->
+<div class="budget-panel collapsed" id="budget-panel">
+  <div class="budget-panel-inner">
+    <div class="budget-panel-title">
+      💰 Riepilogo Budget
+      <span>Clicca su una voce per aprire il dettaglio</span>
+    </div>
+    <div class="budget-totals">
+      <div class="budget-total-card">
+        <div class="btc-label">Preventivo totale</div>
+        <div class="btc-value gold" id="bt-budget">€ 0</div>
+        <div class="btc-sub">Somma di tutti i preventivi</div>
+      </div>
+      <div class="budget-total-card">
+        <div class="btc-label">Già pagato</div>
+        <div class="btc-value sage" id="bt-paid">€ 0</div>
+        <div class="btc-sub">Importi effettivamente versati</div>
+      </div>
+      <div class="budget-total-card">
+        <div class="btc-label">Rimanente da pagare</div>
+        <div class="btc-value rose" id="bt-remaining">€ 0</div>
+        <div class="btc-sub">Preventivo − già pagato</div>
+      </div>
+      <div class="budget-total-card">
+        <div class="btc-label">% pagata</div>
+        <div class="btc-value" id="bt-pct" style="color:var(--text)">0%</div>
+        <div class="btc-sub">
+          <div class="mini-bar-track" style="margin-top:6px">
+            <div class="mini-bar-fill" id="bt-bar" style="width:0%;background:var(--sage)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="budget-table">
+      <thead>
+        <tr>
+          <th>Categoria</th>
+          <th>Preventivo</th>
+          <th>Pagato</th>
+          <th>Rimanente</th>
+          <th class="budget-bar-cell">Avanzamento pag.</th>
+        </tr>
+      </thead>
+      <tbody id="budget-tbody"></tbody>
+      <tfoot>
+        <tr class="total-row">
+          <td>TOTALE</td>
+          <td id="bt-total-budget">€ 0</td>
+          <td id="bt-total-paid">€ 0</td>
+          <td id="bt-total-rem">€ 0</td>
+          <td class="budget-bar-cell"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- TABS NAV -->
+  <div class="main-tabs">
+    <button class="tab-btn active" onclick="switchTab('attivita',this)">📋 Attività</button>
+    <button class="tab-btn" onclick="switchTab('invitati',this)">👥 Invitati <span id="tab-inv-count" style="font-size:11px;background:var(--rose-pale);color:var(--rose);border-radius:100px;padding:1px 7px;margin-left:2px"></span></button>
+    <div style="flex:1"></div>
+    <button class="btn-export" onclick="exportData()">⬇ Esporta tutto</button>
+    <button class="btn-export" onclick="importDataTrigger()">⬆ Importa</button>
+    <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)">
+  </div>
+
+  <!-- TAB: ATTIVITÀ -->
+  <div class="tab-panel active" id="tab-attivita">
+    <div class="toolbar">
+      <button class="filter-btn active" onclick="filterCategory(event,'all')">Tutte</button>
+      <button class="filter-btn" onclick="filterCategory(event,'todo')">Da fare</button>
+      <button class="filter-btn" onclick="filterCategory(event,'done')">Completate</button>
+      <button class="toggle-budget-btn" id="toggle-budget-btn" onclick="toggleBudgetPanel()">💰 Vedi budget</button>
+    </div>
+    <div class="categories-grid" id="categories-grid"></div>
+  </div>
+
+  <!-- TAB: INVITATI -->
+  <div class="tab-panel" id="tab-invitati">
+
+    <!-- Summary cards -->
+    <div class="inv-summary-bar" id="inv-summary"></div>
+
+    <!-- Toolbar -->
+    <div class="inv-toolbar">
+      <input class="inv-search" type="text" id="inv-search" placeholder="🔍 Cerca nome..." oninput="renderGuestTable()">
+      <button class="inv-filter-btn active" onclick="setGuestFilter('tutti',this)">Tutti</button>
+      <button class="inv-filter-btn" onclick="setGuestFilter('adulti',this)">Adulti</button>
+      <button class="inv-filter-btn" onclick="setGuestFilter('bambini',this)">Bambini</button>
+      <button class="inv-filter-btn" onclick="setGuestFilter('alta',this)">Alta prob.</button>
+      <button class="inv-filter-btn" onclick="setGuestFilter('no-risposta',this)">Senza risposta</button>
+      <div class="inv-toolbar-spacer"></div>
+      <button class="btn-add-guest" onclick="openGuestModal()">+ Aggiungi invitato</button>
+    </div>
+
+    <!-- Table -->
+    <div class="inv-table-wrap">
+      <table class="inv-table" id="inv-table">
+        <thead>
+          <tr>
+            <th>Nome e Cognome</th>
+            <th>Tipo</th>
+            <th>Probabilità</th>
+            <th>Avvisato</th>
+            <th>Invito inviato</th>
+            <th>Risposta</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="inv-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL INVITATO -->
+<div class="modal-overlay" id="guest-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeGuestModal()">✕</button>
+    <div class="modal-title" id="modal-title">✦ Aggiungi invitato</div>
+    <input type="hidden" id="modal-guest-id">
+    <div class="modal-row">
+      <div class="modal-field">
+        <label class="modal-label">Nome</label>
+        <input class="modal-input" type="text" id="modal-nome" placeholder="es. Marco">
+      </div>
+      <div class="modal-field">
+        <label class="modal-label">Cognome</label>
+        <input class="modal-input" type="text" id="modal-cognome" placeholder="es. Rossi">
+      </div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-field">
+        <label class="modal-label">Adulto o Bambino</label>
+        <select class="modal-select" id="modal-tipo">
+          <option value="adulto">Adulto</option>
+          <option value="bambino">Bambino</option>
+        </select>
+      </div>
+      <div class="modal-field">
+        <label class="modal-label">Probabilità partecipazione</label>
+        <select class="modal-select" id="modal-prob">
+          <option value="alta">Alta</option>
+          <option value="media">Media</option>
+          <option value="bassa">Bassa</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-field">
+        <label class="modal-label">Avvisato del matrimonio?</label>
+        <select class="modal-select" id="modal-avvisato">
+          <option value="no">No</option>
+          <option value="si">Sì</option>
+        </select>
+      </div>
+      <div class="modal-field">
+        <label class="modal-label">Invito inviato?</label>
+        <select class="modal-select" id="modal-invito">
+          <option value="no">No</option>
+          <option value="si">Sì</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-field">
+      <label class="modal-label">Risposta</label>
+      <select class="modal-select" id="modal-risposta">
+        <option value="attesa">In attesa</option>
+        <option value="si">Confermato ✓</option>
+        <option value="no">Declinato ✗</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-modal-cancel" onclick="closeGuestModal()">Annulla</button>
+      <button class="btn-modal-save" onclick="saveGuest()">Salva</button>
+    </div>
+  </div>
+</div>
+
+<div id="save-toast">✓ Salvato</div>
+
+<script>
+// ====== DEFAULT DATA ======
+const DEFAULT_DATA = {
+  weddingDate: '2027-05-21',
+  guests: [],
+  categories: [
+    { id:'location', emoji:'📍', title:'Location & Venue', tasks:[
+      { id:'l1', title:'Visitare e confrontare le location', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'l2', title:'Verificare disponibilità per la data scelta', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'l3', title:'Firmare e versare acconto per la location', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'l4', title:'Confermare numero massimo di ospiti', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'l5', title:'Verificare piano B in caso di pioggia', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'l6', title:'Sopralluogo con i fornitori per allestimento', priority:'low', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'l7', title:'Confermare orari di accesso e fine musica', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+    ]},
+    { id:'catering', emoji:'🍽️', title:'Catering & Torta', tasks:[
+      { id:'c1', title:'Scegliere e prenotare il catering', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'c2', title:'Fare il menu tasting', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'c3', title:'Definire il menù completo', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'c4', title:'Comunicare allergie e intolleranze', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'c5', title:'Scegliere e ordinare la torta nuziale', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'c6', title:'Organizzare confettata / candy bar', priority:'low', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'c7', title:'Definire vini, spumante e open bar', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+    ]},
+    { id:'outfit', emoji:'👗', title:'Abiti & Look', tasks:[
+      { id:'o1', title:'Scegliere il vestito da sposa', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'o2', title:'Primo fitting abito', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'o3', title:'Secondo fitting e aggiustamenti finali', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'o4', title:'Scegliere abito sposo / completo', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'o5', title:'Scegliere scarpe e accessori sposa', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'o6', title:'Prenotare hair stylist e make-up', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'o7', title:'Prova acconciatura e trucco', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'o8', title:'Coordinare look damigelle/testimoni', priority:'low', done:false, notes:'', link:'', budget:'', paid:'' },
+    ]},
+    { id:'foto', emoji:'📸', title:'Foto & Video', tasks:[
+      { id:'f1', title:'Scegliere il fotografo', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'f2', title:'Vedere portfolio e firmare contratto fotografo', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'f3', title:'Scegliere il videooperatore / filmmaker', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'f4', title:'Creare la shot list (foto must-have)', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'f5', title:'Servizio foto pre-matrimoniale (opzionale)', priority:'low', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'f6', title:'Confermare orari con foto e video', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+    ]},
+    { id:'fiori', emoji:'🌸', title:'Fiori & Decorazioni', tasks:[
+      { id:'fi1', title:'Scegliere e incontrare il fioraio', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'fi2', title:'Definire il bouquet della sposa', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'fi3', title:'Decorazioni tavoli e location', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'fi4', title:'Scegliere fiori per cerimonia', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'fi5', title:'Coordinare colori con il tema', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'fi6', title:'Confermare allestimento e smontaggio', priority:'low', done:false, notes:'', link:'', budget:'', paid:'' },
+    ]},
+    { id:'musica', emoji:'🎵', title:'Musica & Intrattenimento', tasks:[
+      { id:'m1', title:'Scegliere tra DJ e live band', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'m2', title:'Prenotare e firmare contratto musicista', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'m3', title:'Musica per cerimonia (ingresso, uscita)', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'m4', title:'Playlist must e canzoni da evitare', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'m5', title:'Intrattenimento pomeriggio (cocktail)', priority:'low', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'m6', title:'Verificare impianto audio della location', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+    ]},
+    { id:'ospiti', emoji:'💌', title:'Inviti & Ospiti', tasks:[
+      { id:'inv1', title:'Compilare lista definitiva degli ospiti', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'inv2', title:'Scegliere e ordinare le partecipazioni', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'inv3', title:'Spedire inviti (almeno 3 mesi prima)', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'inv4', title:'Raccogliere le RSVP', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'inv5', title:'Organizzare lista regali / wishlist', priority:'low', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'inv6', title:'Gestire pernottamenti ospiti fuori città', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'inv7', title:'Preparare segnaposti e tableau de mariage', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'inv8', title:'Preparare bomboniere', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+    ]},
+    { id:'burocrazia', emoji:'⚖️', title:'Documenti & Burocrazia', tasks:[
+      { id:'b1', title:'Pubblicazioni in Comune', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'b2', title:'Scegliere rito: civile o religioso', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'b3', title:'Prenotare la sala del Comune (se civile)', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'b4', title:'Documenti per la chiesa (se religioso)', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'b5', title:'Scegliere i testimoni', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'b6', title:'Notificare cambio cognome/stato civile', priority:'low', done:false, notes:'', link:'', budget:'', paid:'' },
+    ]},
+    { id:'cerimonia', emoji:'💐', title:'Cerimonia', tasks:[
+      { id:'cer1', title:'Scrivere le promesse / voti nuziali', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'cer2', title:'Scegliere le letture per la cerimonia', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'cer3', title:'Organizzare il programma della cerimonia', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'cer4', title:'Scegliere chi porta gli anelli (paggetto)', priority:'low', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'cer5', title:'Prove cerimonia con officiante', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+    ]},
+    { id:'luna', emoji:'🌍', title:'Luna di Miele', tasks:[
+      { id:'lm1', title:'Scegliere la destinazione', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'lm2', title:'Prenotare voli', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'lm3', title:'Prenotare hotel / resort', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'lm4', title:'Verificare documenti necessari (visto, ecc.)', priority:'low', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'lm5', title:'Acquistare assicurazione viaggio', priority:'low', done:false, notes:'', link:'', budget:'', paid:'' },
+    ]},
+    { id:'fedi', emoji:'💍', title:'Fedi & Gioielli', tasks:[
+      { id:'fe1', title:'Scegliere le fedi nuziali', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'fe2', title:'Ordinare le fedi (almeno 3 mesi prima)', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'fe3', title:'Scegliere gioielli sposa', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'fe4', title:'Ritirare le fedi e verificare incisione', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
+    ]},
+    { id:'logistica', emoji:'🚗', title:'Logistica & Trasporti', tasks:[
+      { id:'lo1', title:'Auto per gli sposi (noleggio / d\'epoca)', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'lo2', title:'Organizzare trasporto ospiti (bus navetta)', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'lo3', title:'Verificare parcheggi alla location', priority:'low', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'lo4', title:'Comunicare indicazioni stradali agli ospiti', priority:'low', done:false, notes:'', link:'', budget:'', paid:'' },
+      { id:'lo5', title:'Sistemazione sposi la notte del matrimonio', priority:'mid', done:false, notes:'', link:'', budget:'', paid:'' },
+    ]},
+  ]
+};
+
+// ====== GITHUB GIST CONFIG ======
+const PROXY_URL = 'https://matrimonio-proxy.vinciguerra-salvatore86.workers.dev';
+
+// ====== STATE ======
+let data = JSON.parse(JSON.stringify(DEFAULT_DATA));
+let _saveTimer = null;
+
+// ====== HELPERS ======
+function fmt(n) {
+  if (!n && n !== 0) return '—';
+  return '€ ' + Number(n).toLocaleString('it-IT', {minimumFractionDigits:0, maximumFractionDigits:0});
+}
+function parseNum(v) { return parseFloat(String(v).replace(',','.')) || 0; }
+
+function migrateData(d) {
+  if (!d.guests) d.guests = [];
+  d.categories.forEach(cat => cat.tasks.forEach(t => {
+    if (t.budget === undefined) t.budget = '';
+    if (t.paid === undefined) t.paid = '';
+  }));
+  return d;
+}
+
+// ====== GIST LOAD ======
+async function loadFromGist() {
+  showSyncStatus('⟳ Caricamento…', 'loading');
+  try {
+    const res = await fetch(PROXY_URL);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const parsed = await res.json();
+    if (parsed.categories && parsed.categories.length > 0) {
+      data = migrateData(parsed);
+    }
+    showSyncStatus('✓ Sincronizzato', 'ok');
+  } catch(e) {
+    console.warn('Proxy load error:', e);
+    showSyncStatus('⚠ Offline — dati locali', 'warn');
+    const local = localStorage.getItem('matrimonio-v2');
+    if (local) data = migrateData(JSON.parse(local));
+  }
+  render();
+  updateCountdown();
+  updateTabCount();
+}
+
+// ====== GIST SAVE ======
+function save() {
+  // Always keep a local copy as fallback
+  localStorage.setItem('matrimonio-v2', JSON.stringify(data));
+  showToast();
+  // Debounce remote save: 1.5s after last change
+  clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(saveToGist, 1500);
+}
+
+async function saveToGist() {
+  showSyncStatus('⟳ Salvataggio…', 'loading');
+  try {
+    const res = await fetch(PROXY_URL, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    showSyncStatus('✓ Salvato su cloud', 'ok');
+  } catch(e) {
+    console.warn('Proxy save error:', e);
+    showSyncStatus('⚠ Salvato solo in locale', 'warn');
+  }
+}
+
+function showSyncStatus(msg, type) {
+  let el = document.getElementById('sync-status');
+  if (!el) return;
+  el.textContent = msg;
+  el.className = 'sync-status ' + type;
+}
+
+function showToast() {
+  const t = document.getElementById('save-toast');
+  t.classList.add('show');
+  clearTimeout(window._tt);
+  window._tt = setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+// ====== RENDER ======
+function render() {
+  const grid = document.getElementById('categories-grid');
+  grid.innerHTML = '';
+  data.categories.forEach(cat => grid.appendChild(buildCategoryCard(cat)));
+  updateStats();
+  updateBudgetPanel();
+}
+
+function buildCategoryCard(cat) {
+  const card = document.createElement('div');
+  card.className = 'category-card';
+  card.dataset.catId = cat.id;
+  const done = cat.tasks.filter(t => t.done).length;
+  const total = cat.tasks.length;
+  const pct = total > 0 ? Math.round((done/total)*100) : 0;
+  const collapsed = cat.collapsed || false;
+  const catBudget = cat.tasks.reduce((s,t) => s + parseNum(t.budget), 0);
+  const budgetStr = catBudget > 0 ? fmt(catBudget) : '';
+
+  card.innerHTML = `
+    <div class="cat-header ${collapsed?'collapsed':''}" onclick="toggleCollapse('${cat.id}')">
+      <span class="cat-emoji">${cat.emoji}</span>
+      <div class="cat-title-wrap">
+        <div class="cat-title">${cat.title}</div>
+        <div class="cat-meta">
+          <span class="cat-progress-mini">${done} / ${total} completati</span>
+          ${budgetStr ? `<span class="cat-budget-mini">· ${budgetStr}</span>` : ''}
+        </div>
+      </div>
+      <span class="cat-chevron">▾</span>
+    </div>
+    <div class="cat-progress-bar">
+      <div class="cat-progress-fill" style="width:${pct}%;background:${pct===100?'var(--sage)':'var(--rose)'}"></div>
+    </div>
+    <div class="cat-body" style="display:${collapsed?'none':'block'}">
+      ${cat.tasks.map(t => buildTaskHTML(cat.id, t)).join('')}
+      <div class="add-task-row">
+        <button class="btn-add-task" onclick="toggleAddForm('${cat.id}')">+ Aggiungi attività</button>
+        <div class="add-task-form" id="add-form-${cat.id}">
+          <input class="add-task-input" type="text" placeholder="Nome attività..." id="add-input-${cat.id}">
+          <select class="priority-select" id="add-prio-${cat.id}">
+            <option value="high">Alta</option>
+            <option value="mid" selected>Media</option>
+            <option value="low">Bassa</option>
+          </select>
+          <button class="btn-confirm-task" onclick="addTask('${cat.id}')">+</button>
+        </div>
+      </div>
+    </div>
+  `;
+  return card;
+}
+
+function buildTaskHTML(catId, t) {
+  const pLabel = { high:'Alta', mid:'Media', low:'Bassa' };
+  const pClass = { high:'priority-high', mid:'priority-mid', low:'priority-low' };
+  const hasLink = t.link && t.link.length > 0;
+  const hasBudget = t.budget && parseNum(t.budget) > 0;
+  const budgetBadge = hasBudget ? fmt(parseNum(t.budget)) : '';
+  const saldo = hasBudget ? (parseNum(t.budget) - parseNum(t.paid)) : null;
+  const saldoClass = saldo === null ? 'zero' : saldo > 0 ? 'positive' : saldo < 0 ? 'negative' : 'zero';
+  const saldoText = saldo === null ? '—' : (saldo >= 0 ? '− ' : '+ ') + fmt(Math.abs(saldo));
+  const saldoLabel = saldo === null ? '—' : saldo >= 0 ? 'Ancora da pagare' : 'Pagato in eccesso';
+
+  return `
+    <div class="task-row ${t.done?'done':''}" id="task-${t.id}">
+      <div class="task-main">
+        <div class="task-check ${t.done?'checked':''}" onclick="toggleTask('${catId}','${t.id}')"></div>
+        <span class="task-title" onclick="toggleDetails('${t.id}')">${t.title}</span>
+        ${budgetBadge ? `<span class="task-price-badge visible">${budgetBadge}</span>` : `<span class="task-price-badge" id="badge-${t.id}"></span>`}
+        <span class="task-priority ${pClass[t.priority]}">${pLabel[t.priority]}</span>
+        <button class="task-toggle-btn" onclick="toggleDetails('${t.id}')" title="Dettagli">✎</button>
+      </div>
+      <div class="task-details" id="details-${t.id}">
+        <div>
+          <span class="detail-label">📝 Note</span>
+          <textarea class="task-notes" placeholder="Appunti, contatti, dettagli..."
+            oninput="updateField('${catId}','${t.id}','notes',this.value)"
+          >${t.notes||''}</textarea>
+        </div>
+        <div>
+          <span class="detail-label">💰 Budget</span>
+          <div class="budget-fields">
+            <div class="budget-field">
+              <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">Preventivo</div>
+              <div class="budget-input-wrap">
+                <span class="budget-currency">€</span>
+                <input class="budget-input" type="number" min="0" placeholder="0"
+                  value="${t.budget||''}"
+                  oninput="updateBudget('${catId}','${t.id}','budget',this.value)"
+                >
+              </div>
+            </div>
+            <div class="budget-field">
+              <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px">Già pagato</div>
+              <div class="budget-input-wrap">
+                <span class="budget-currency">€</span>
+                <input class="budget-input" type="number" min="0" placeholder="0"
+                  value="${t.paid||''}"
+                  oninput="updateBudget('${catId}','${t.id}','paid',this.value)"
+                >
+              </div>
+            </div>
+            <div class="budget-saldo">
+              <span class="saldo-label">Saldo</span>
+              <div class="saldo-value ${saldoClass}" id="saldo-${t.id}">${saldoText}</div>
+              <div style="font-size:10px;color:var(--text-muted);margin-top:2px" id="saldo-lbl-${t.id}">${saldoLabel}</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="detail-label">🔗 Documento / Link</span>
+          <div class="task-link-row">
+            <input class="task-link" type="url" placeholder="https://..." value="${t.link||''}"
+              oninput="updateField('${catId}','${t.id}','link',this.value)"
+            >
+            ${hasLink?`<button class="open-link-btn" onclick="openLink('${t.id}')">Apri ↗</button>`:''}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ====== ACTIONS ======
+function toggleTask(catId, taskId) {
+  const cat = data.categories.find(c => c.id===catId);
+  const task = cat.tasks.find(t => t.id===taskId);
+  task.done = !task.done;
+  save();
+  const row = document.getElementById('task-'+taskId);
+  const check = row.querySelector('.task-check');
+  if (task.done) { row.classList.add('done'); check.classList.add('checked'); }
+  else { row.classList.remove('done'); check.classList.remove('checked'); }
+  updateCatProgress(catId);
+  updateStats();
+  updateBudgetPanel();
+}
+
+function toggleDetails(taskId) {
+  document.getElementById('details-'+taskId).classList.toggle('open');
+}
+
+function updateField(catId, taskId, field, val) {
+  const task = data.categories.find(c=>c.id===catId).tasks.find(t=>t.id===taskId);
+  task[field] = val;
+  if (field === 'link') {
+    const row = document.getElementById('task-'+taskId);
+    const lr = row.querySelector('.task-link-row');
+    let btn = lr.querySelector('.open-link-btn');
+    if (val && val.length > 5) {
+      if (!btn) { btn = document.createElement('button'); btn.className='open-link-btn'; btn.textContent='Apri ↗'; btn.onclick=()=>openLink(taskId); lr.appendChild(btn); }
+    } else if (btn) btn.remove();
+  }
+  save();
+}
+
+function updateBudget(catId, taskId, field, val) {
+  const cat = data.categories.find(c=>c.id===catId);
+  const task = cat.tasks.find(t=>t.id===taskId);
+  task[field] = val;
+  // update saldo display
+  const bud = parseNum(task.budget);
+  const paid = parseNum(task.paid);
+  const hasBudget = bud > 0;
+  const saldo = hasBudget ? (bud - paid) : null;
+  const saldoEl = document.getElementById('saldo-'+taskId);
+  const saldoLblEl = document.getElementById('saldo-lbl-'+taskId);
+  if (saldoEl) {
+    saldoEl.className = 'saldo-value ' + (saldo===null?'zero':saldo>0?'positive':saldo<0?'negative':'zero');
+    saldoEl.textContent = saldo===null ? '—' : (saldo>=0?'− ':'+ ') + fmt(Math.abs(saldo));
+    if (saldoLblEl) saldoLblEl.textContent = saldo===null?'—':saldo>=0?'Ancora da pagare':'Pagato in eccesso';
+  }
+  // update badge
+  const badge = document.getElementById('badge-'+taskId) || document.querySelector(`#task-${taskId} .task-price-badge`);
+  if (badge) { badge.textContent = bud > 0 ? fmt(bud) : ''; badge.classList.toggle('visible', bud>0); }
+  // update cat header
+  updateCatBudgetHeader(catId);
+  updateStats();
+  updateBudgetPanel();
+  save();
+}
+
+function openLink(taskId) {
+  const task = data.categories.flatMap(c=>c.tasks).find(t=>t.id===taskId);
+  if (task && task.link) window.open(task.link, '_blank');
+}
+
+function toggleCollapse(catId) {
+  const cat = data.categories.find(c=>c.id===catId);
+  cat.collapsed = !cat.collapsed; save(); render();
+}
+
+function toggleAddForm(catId) {
+  const form = document.getElementById('add-form-'+catId);
+  form.classList.toggle('open');
+  if (form.classList.contains('open')) document.getElementById('add-input-'+catId).focus();
+}
+
+function addTask(catId) {
+  const input = document.getElementById('add-input-'+catId);
+  const prio = document.getElementById('add-prio-'+catId);
+  const title = input.value.trim(); if (!title) return;
+  const cat = data.categories.find(c=>c.id===catId);
+  cat.tasks.push({ id:catId+'_'+Date.now(), title, priority:prio.value, done:false, notes:'', link:'', budget:'', paid:'' });
+  input.value=''; save(); render();
+}
+
+// ====== FILTERS ======
+function filterCategory(e, filter) {
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  document.querySelectorAll('.category-card').forEach(card => {
+    const cat = data.categories.find(c=>c.id===card.dataset.catId);
+    if (filter==='all') { card.classList.remove('hidden'); return; }
+    if (filter==='done') card.classList.toggle('hidden', cat.tasks.filter(t=>t.done).length===0);
+    if (filter==='todo') card.classList.toggle('hidden', cat.tasks.every(t=>t.done));
+  });
+}
+
+// ====== STATS ======
+function updateStats() {
+  const allTasks = data.categories.flatMap(c=>c.tasks);
+  const done = allTasks.filter(t=>t.done).length;
+  const total = allTasks.length;
+  const pct = total>0?Math.round((done/total)*100):0;
+  const totalBudget = allTasks.reduce((s,t)=>s+parseNum(t.budget),0);
+  const totalPaid = allTasks.reduce((s,t)=>s+parseNum(t.paid),0);
+  document.getElementById('stat-done').textContent = done;
+  document.getElementById('stat-total').textContent = total;
+  document.getElementById('progress-fill').style.width = pct+'%';
+  document.getElementById('progress-pct').textContent = pct+'%';
+  document.getElementById('stat-budget').textContent = totalBudget>0?'€'+Math.round(totalBudget/1000)+'k':'—';
+  document.getElementById('stat-paid').textContent = totalPaid>0?'€'+Math.round(totalPaid/1000)+'k':'—';
+}
+
+function updateCatProgress(catId) {
+  const cat = data.categories.find(c=>c.id===catId);
+  const card = document.querySelector(`[data-cat-id="${catId}"]`); if (!card) return;
+  const done = cat.tasks.filter(t=>t.done).length;
+  const total = cat.tasks.length;
+  const pct = total>0?Math.round((done/total)*100):0;
+  const fill = card.querySelector('.cat-progress-fill');
+  const mini = card.querySelector('.cat-progress-mini');
+  if (fill){fill.style.width=pct+'%';fill.style.background=pct===100?'var(--sage)':'var(--rose)';}
+  if (mini) mini.textContent=`${done} / ${total} completati`;
+}
+
+function updateCatBudgetHeader(catId) {
+  const cat = data.categories.find(c=>c.id===catId);
+  const card = document.querySelector(`[data-cat-id="${catId}"]`); if (!card) return;
+  const catBudget = cat.tasks.reduce((s,t)=>s+parseNum(t.budget),0);
+  let bm = card.querySelector('.cat-budget-mini');
+  if (catBudget > 0) {
+    if (!bm) {
+      const meta = card.querySelector('.cat-meta');
+      bm = document.createElement('span'); bm.className='cat-budget-mini'; meta.appendChild(bm);
+    }
+    bm.textContent = '· ' + fmt(catBudget);
+  } else if (bm) bm.remove();
+}
+
+// ====== BUDGET PANEL ======
+function toggleBudgetPanel() {
+  const panel = document.getElementById('budget-panel');
+  const btn = document.getElementById('toggle-budget-btn');
+  const isCollapsed = panel.classList.contains('collapsed');
+  if (isCollapsed) {
+    panel.classList.remove('collapsed');
+    panel.style.maxHeight = '2000px';
+    btn.classList.add('active');
+    btn.textContent = '💰 Chiudi budget';
+  } else {
+    panel.classList.add('collapsed');
+    btn.classList.remove('active');
+    btn.textContent = '💰 Vedi budget';
+  }
+}
+
+function updateBudgetPanel() {
+  const allTasks = data.categories.flatMap(c=>c.tasks);
+  const totalBudget = allTasks.reduce((s,t)=>s+parseNum(t.budget),0);
+  const totalPaid = allTasks.reduce((s,t)=>s+parseNum(t.paid),0);
+  const totalRem = totalBudget - totalPaid;
+  const pct = totalBudget>0?Math.round((totalPaid/totalBudget)*100):0;
+
+  document.getElementById('bt-budget').textContent = fmt(totalBudget);
+  document.getElementById('bt-paid').textContent = fmt(totalPaid);
+  document.getElementById('bt-remaining').textContent = fmt(Math.max(0,totalRem));
+  document.getElementById('bt-pct').textContent = pct+'%';
+  document.getElementById('bt-bar').style.width = pct+'%';
+  document.getElementById('bt-total-budget').textContent = fmt(totalBudget);
+  document.getElementById('bt-total-paid').textContent = fmt(totalPaid);
+  document.getElementById('bt-total-rem').textContent = fmt(Math.max(0,totalRem));
+
+  const tbody = document.getElementById('budget-tbody');
+  tbody.innerHTML = '';
+  data.categories.forEach(cat => {
+    const bud = cat.tasks.reduce((s,t)=>s+parseNum(t.budget),0);
+    const paid = cat.tasks.reduce((s,t)=>s+parseNum(t.paid),0);
+    const rem = bud - paid;
+    const barPct = bud>0?Math.min(100,Math.round((paid/bud)*100)):0;
+    const diffClass = rem>0?'under':rem<0?'over':'zero';
+    const diffText = bud===0 ? '<span class="budget-diff zero">—</span>' :
+      `<span class="budget-diff ${diffClass}">${fmt(Math.abs(rem))}${rem<0?' in eccesso':''}</span>`;
+    tbody.innerHTML += `
+      <tr onclick="scrollToCard('${cat.id}')" style="cursor:pointer">
+        <td><span class="budget-cat-name">${cat.emoji} ${cat.title}</span></td>
+        <td>${bud>0?fmt(bud):'<span style="color:#ccc">—</span>'}</td>
+        <td>${paid>0?fmt(paid):'<span style="color:#ccc">—</span>'}</td>
+        <td>${diffText}</td>
+        <td class="budget-bar-cell">
+          <div class="mini-bar-track">
+            <div class="mini-bar-fill" style="width:${barPct}%;background:${barPct===100?'var(--sage)':'var(--rose)'}"></div>
+          </div>
+        </td>
+      </tr>
+    `;
+  });
+}
+
+function scrollToCard(catId) {
+  const card = document.querySelector(`[data-cat-id="${catId}"]`);
+  if (card) { card.scrollIntoView({behavior:'smooth',block:'center'}); }
+}
+
+// ====== COUNTDOWN ======
+function updateCountdown() {
+  const wedding = new Date(data.weddingDate+'T10:00:00');
+  const now = new Date();
+  const diff = wedding - now;
+  if (diff<=0) { document.getElementById('stat-days').textContent='🎉'; return; }
+  const days = Math.floor(diff/(1000*60*60*24));
+  const months = Math.floor(days/30);
+  document.getElementById('stat-days').textContent = days;
+  document.getElementById('countdown-text').innerHTML =
+    `Mancano <strong>${days} giorni</strong> (circa ${months} mesi) al grande giorno — ${wedding.toLocaleDateString('it-IT',{day:'numeric',month:'long',year:'numeric'})}`;
+}
+
+// ====== EXPORT / IMPORT ======
+function exportData() {
+  const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href=url; a.download='matrimonio-backup.json'; a.click();
+}
+function importDataTrigger() { document.getElementById('import-file').click(); }
+function importData(e) {
+  const file = e.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      data = migrateData(JSON.parse(ev.target.result));
+      save(); render(); updateCountdown(); updateTabCount();
+      alert('✓ Dati importati e sincronizzati!');
+    }
+    catch { alert('Errore: file non valido.'); }
+  };
+  reader.readAsText(file);
+}
+
+// ====== TABS ======
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+  if (tab === 'invitati') renderGuestTable();
+}
+
+// ====== GUEST DATA ======
+let guestFilter = 'tutti';
+
+function setGuestFilter(f, btn) {
+  guestFilter = f;
+  document.querySelectorAll('.inv-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGuestTable();
+}
+
+function renderGuestTable() {
+  const guests = data.guests || [];
+  const search = (document.getElementById('inv-search')?.value || '').toLowerCase();
+  const tbody = document.getElementById('inv-tbody');
+  if (!tbody) return;
+
+  const filtered = guests.filter(g => {
+    const nameMatch = (g.nome + ' ' + g.cognome).toLowerCase().includes(search);
+    if (!nameMatch) return false;
+    if (guestFilter === 'adulti') return g.tipo === 'adulto';
+    if (guestFilter === 'bambini') return g.tipo === 'bambino';
+    if (guestFilter === 'alta') return g.prob === 'alta';
+    if (guestFilter === 'no-risposta') return g.risposta === 'attesa';
+    return true;
+  });
+
+  tbody.innerHTML = filtered.length === 0
+    ? `<tr><td colspan="7" style="text-align:center;padding:32px;color:var(--text-muted);font-size:14px">Nessun invitato trovato</td></tr>`
+    : filtered.map(g => buildGuestRow(g)).join('');
+
+  renderGuestSummary();
+  updateTabCount();
+}
+
+function buildGuestRow(g) {
+  const typeClass = g.tipo === 'bambino' ? 'type-bambino' : 'type-adulto';
+  const typeLabel = g.tipo === 'bambino' ? '👶 Bambino' : '👤 Adulto';
+  const probClass = { alta:'prob-alta', media:'prob-media', bassa:'prob-bassa' };
+  const probLabel = { alta:'Alta ↑', media:'Media →', bassa:'Bassa ↓' };
+  const rispClass = { si:'risposta-si', no:'risposta-no', attesa:'risposta-attesa' };
+  const rispLabel = { si:'✓ Confermato', no:'✗ Declinato', attesa:'In attesa…' };
+
+  return `<tr id="guest-row-${g.id}">
+    <td class="guest-nome">${g.nome} ${g.cognome}</td>
+    <td><span class="guest-type-badge ${typeClass}">${typeLabel}</span></td>
+    <td><span class="prob-badge ${probClass[g.prob]}">${probLabel[g.prob]}</span></td>
+    <td>
+      <span class="status-check ${g.avvisato==='si'?'on':''}" onclick="toggleGuestField('${g.id}','avvisato')" title="${g.avvisato==='si'?'Avvisato':'Non ancora avvisato'}">
+        ${g.avvisato==='si'?'✓':''}
+      </span>
+    </td>
+    <td>
+      <span class="status-check ${g.invito==='si'?'on':''}" onclick="toggleGuestField('${g.id}','invito')" title="${g.invito==='si'?'Invito inviato':'Invito non inviato'}">
+        ${g.invito==='si'?'✓':''}
+      </span>
+    </td>
+    <td>
+      <span class="risposta-badge ${rispClass[g.risposta]}" onclick="cycleRisposta('${g.id}')" title="Clicca per cambiare">
+        ${rispLabel[g.risposta]}
+      </span>
+    </td>
+    <td>
+      <button class="btn-edit-guest" onclick="openGuestModal('${g.id}')" title="Modifica">✎</button>
+      <button class="btn-del-guest" onclick="deleteGuest('${g.id}')" title="Elimina">🗑</button>
+    </td>
+  </tr>`;
+}
+
+function renderGuestSummary() {
+  const guests = data.guests || [];
+  const total = guests.length;
+  const adulti = guests.filter(g => g.tipo === 'adulto').length;
+  const bambini = guests.filter(g => g.tipo === 'bambino').length;
+  const confermati = guests.filter(g => g.risposta === 'si').length;
+  const attesa = guests.filter(g => g.risposta === 'attesa').length;
+  const alta = guests.filter(g => g.prob === 'alta').length;
+
+  const el = document.getElementById('inv-summary');
+  if (!el) return;
+  el.innerHTML = `
+    <div class="inv-sum-card"><span class="inv-sum-num">${total}</span><span class="inv-sum-label">Totale invitati</span></div>
+    <div class="inv-sum-card"><span class="inv-sum-num rose">${confermati}</span><span class="inv-sum-label">Confermati</span></div>
+    <div class="inv-sum-card"><span class="inv-sum-num sage">${alta}</span><span class="inv-sum-label">Alta prob.</span></div>
+    <div class="inv-sum-card"><span class="inv-sum-num gold">${adulti}</span><span class="inv-sum-label">Adulti</span></div>
+    <div class="inv-sum-card"><span class="inv-sum-num muted">${bambini}</span><span class="inv-sum-label">Bambini</span></div>
+    <div class="inv-sum-card"><span class="inv-sum-num muted">${attesa}</span><span class="inv-sum-label">In attesa risp.</span></div>
+  `;
+}
+
+function updateTabCount() {
+  const el = document.getElementById('tab-inv-count');
+  if (el) el.textContent = (data.guests || []).length;
+}
+
+function toggleGuestField(id, field) {
+  const g = (data.guests || []).find(x => x.id === id);
+  if (!g) return;
+  g[field] = g[field] === 'si' ? 'no' : 'si';
+  save();
+  renderGuestTable();
+}
+
+function cycleRisposta(id) {
+  const g = (data.guests || []).find(x => x.id === id);
+  if (!g) return;
+  const cycle = { attesa: 'si', si: 'no', no: 'attesa' };
+  g.risposta = cycle[g.risposta] || 'attesa';
+  save();
+  renderGuestTable();
+}
+
+function deleteGuest(id) {
+  if (!confirm('Eliminare questo invitato?')) return;
+  data.guests = (data.guests || []).filter(g => g.id !== id);
+  save();
+  renderGuestTable();
+}
+
+// ====== GUEST MODAL ======
+function openGuestModal(id) {
+  const modal = document.getElementById('guest-modal');
+  document.getElementById('modal-title').textContent = id ? '✎ Modifica invitato' : '✦ Aggiungi invitato';
+  document.getElementById('modal-guest-id').value = id || '';
+
+  if (id) {
+    const g = (data.guests || []).find(x => x.id === id);
+    if (g) {
+      document.getElementById('modal-nome').value = g.nome;
+      document.getElementById('modal-cognome').value = g.cognome;
+      document.getElementById('modal-tipo').value = g.tipo;
+      document.getElementById('modal-prob').value = g.prob;
+      document.getElementById('modal-avvisato').value = g.avvisato;
+      document.getElementById('modal-invito').value = g.invito;
+      document.getElementById('modal-risposta').value = g.risposta;
+    }
+  } else {
+    document.getElementById('modal-nome').value = '';
+    document.getElementById('modal-cognome').value = '';
+    document.getElementById('modal-tipo').value = 'adulto';
+    document.getElementById('modal-prob').value = 'alta';
+    document.getElementById('modal-avvisato').value = 'no';
+    document.getElementById('modal-invito').value = 'no';
+    document.getElementById('modal-risposta').value = 'attesa';
+  }
+  modal.classList.add('open');
+  setTimeout(() => document.getElementById('modal-nome').focus(), 100);
+}
+
+function closeGuestModal() {
+  document.getElementById('guest-modal').classList.remove('open');
+}
+
+function saveGuest() {
+  const nome = document.getElementById('modal-nome').value.trim();
+  const cognome = document.getElementById('modal-cognome').value.trim();
+  if (!nome) { document.getElementById('modal-nome').focus(); return; }
+
+  if (!data.guests) data.guests = [];
+  const existingId = document.getElementById('modal-guest-id').value;
+
+  const guestData = {
+    id: existingId || 'g_' + Date.now(),
+    nome,
+    cognome,
+    tipo: document.getElementById('modal-tipo').value,
+    prob: document.getElementById('modal-prob').value,
+    avvisato: document.getElementById('modal-avvisato').value,
+    invito: document.getElementById('modal-invito').value,
+    risposta: document.getElementById('modal-risposta').value,
+  };
+
+  if (existingId) {
+    const idx = data.guests.findIndex(g => g.id === existingId);
+    if (idx >= 0) data.guests[idx] = guestData;
+  } else {
+    data.guests.push(guestData);
+  }
+
+  save();
+  closeGuestModal();
+  renderGuestTable();
+}
+
+// close modal on overlay click
+document.getElementById('guest-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeGuestModal();
+});
+
+// ====== INIT ======
+updateCountdown();
+setInterval(updateCountdown, 60000);
+loadFromGist();
+</script>
+</body>
+</html>
