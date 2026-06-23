@@ -561,6 +561,102 @@
   }
   .doc-empty-icon { font-size: 36px; margin-bottom: 12px; display: block; }
 
+  /* ====== PREVENTIVO STYLES ====== */
+  .prev-kpi-bar { display: flex; gap: 14px; margin-bottom: 28px; flex-wrap: wrap; }
+  .prev-kpi-card {
+    flex: 1; min-width: 150px; background: #fff; border-radius: 14px;
+    border: 1px solid var(--border); padding: 18px 20px;
+    box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+  }
+  .prev-kpi-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .prev-kpi-card.gold::before { background: linear-gradient(90deg, var(--gold), #e0c478); }
+  .prev-kpi-card.rose::before { background: linear-gradient(90deg, var(--rose), #e8a89f); }
+  .prev-kpi-card.sage::before { background: linear-gradient(90deg, var(--sage), #9dc4a0); }
+  .prev-kpi-card.dark::before { background: linear-gradient(90deg, #2c2420, #4a3830); }
+  .prev-kpi-card.warn::before { background: linear-gradient(90deg, #e67e22, #f39c12); }
+  .prev-kpi-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; display: block; }
+  .prev-kpi-value { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--text); display: block; line-height: 1; }
+  .prev-kpi-value.gold { color: var(--gold); }
+  .prev-kpi-value.rose { color: var(--rose); }
+  .prev-kpi-value.sage { color: var(--sage); }
+  .prev-kpi-value.warn { color: #e67e22; }
+  .prev-kpi-sub { font-size: 11px; color: var(--text-muted); margin-top: 6px; display: block; }
+
+  /* Budget cap input */
+  .prev-cap-section {
+    background: #fff; border-radius: 14px; border: 1px solid var(--border);
+    padding: 20px 24px; margin-bottom: 24px; box-shadow: var(--shadow-sm);
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  }
+  .prev-cap-label { font-size: 13px; font-weight: 500; color: var(--text); white-space: nowrap; }
+  .prev-cap-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .prev-cap-input-wrap { display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: 10px; background: var(--cream); overflow: hidden; transition: border-color 0.2s; }
+  .prev-cap-input-wrap:focus-within { border-color: var(--gold); background: #fff; }
+  .prev-cap-currency { padding: 0 12px; font-size: 14px; color: var(--text-muted); border-right: 1px solid var(--border); height: 40px; display: flex; align-items: center; background: var(--ivory); font-weight: 500; }
+  .prev-cap-input { border: none; outline: none; padding: 10px 14px; font-family: 'DM Sans', sans-serif; font-size: 15px; background: transparent; width: 160px; color: var(--text); }
+  .prev-cap-status { padding: 6px 16px; border-radius: 100px; font-size: 12px; font-weight: 500; white-space: nowrap; }
+  .prev-cap-status.ok { background: #e8f5e9; color: #2e7d32; }
+  .prev-cap-status.warn { background: #fff3cd; color: #856404; }
+  .prev-cap-status.over { background: #fde8e8; color: #c0392b; }
+  .prev-cap-status.none { background: var(--border); color: var(--text-muted); }
+  .prev-cap-spacer { flex: 1; }
+
+  /* Preventivo breakdown table */
+  .prev-table-wrap { background: #fff; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow-sm); margin-bottom: 24px; }
+  .prev-table-header { padding: 18px 24px 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: var(--ivory); }
+  .prev-table-title { font-family: 'Playfair Display', serif; font-size: 17px; }
+  .prev-table-subtitle { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .prev-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .prev-table th {
+    text-align: left; padding: 10px 16px; font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--border);
+    font-weight: 500; background: var(--ivory);
+  }
+  .prev-table th:not(:first-child) { text-align: right; }
+  .prev-table td { padding: 12px 16px; border-bottom: 1px solid rgba(232,221,212,0.5); vertical-align: middle; }
+  .prev-table td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+  .prev-table tr:last-child td { border-bottom: none; }
+  .prev-table tr:hover td { background: var(--rose-pale); cursor: pointer; }
+  .prev-table .total-row td { font-weight: 600; background: #faf7f2; border-top: 2px solid var(--border); font-size: 14px; }
+  .prev-cat-name { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+  .prev-cat-emoji-wrap { width: 30px; height: 30px; border-radius: 8px; background: var(--ivory); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .prev-forn-tag { font-size: 10px; color: var(--text-muted); background: var(--border); border-radius: 4px; padding: 1px 6px; margin-left: 4px; }
+  .prev-stato-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+  .prev-stato-dot.confermato { background: var(--sage); }
+  .prev-stato-dot.stimato { background: var(--gold); }
+  .prev-stato-dot.nessuno { background: var(--border); }
+  .prev-bar-cell { width: 100px; }
+  .prev-mini-bar { background: var(--border); border-radius: 100px; height: 5px; margin-top: 3px; }
+  .prev-mini-bar-fill { height: 100%; border-radius: 100px; background: var(--sage); }
+  .prev-saldo-pos { color: var(--sage); font-weight: 500; }
+  .prev-saldo-neg { color: #c0392b; font-weight: 500; }
+  .prev-saldo-zero { color: var(--text-muted); }
+
+  /* Fonte dati badges */
+  .prev-fonte { font-size: 9px; letter-spacing: 0.5px; text-transform: uppercase; padding: 1px 6px; border-radius: 3px; }
+  .prev-fonte.forn { background: #e3f0ff; color: #1a5fa8; }
+  .prev-fonte.man { background: var(--gold-light); color: #8a6a20; }
+  .prev-fonte.empty { background: var(--border); color: var(--text-muted); }
+
+  /* Chart donut */
+  .prev-charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  @media (max-width: 700px) { .prev-charts-row { grid-template-columns: 1fr; } }
+  .prev-chart-card { background: #fff; border-radius: 16px; border: 1px solid var(--border); padding: 20px; box-shadow: var(--shadow-sm); }
+  .prev-chart-title { font-family: 'Playfair Display', serif; font-size: 15px; margin-bottom: 16px; }
+  .prev-donut-wrap { display: flex; align-items: center; gap: 20px; }
+  .prev-donut-legend { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .prev-legend-row { display: flex; align-items: center; gap: 8px; font-size: 12px; cursor: pointer; }
+  .prev-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .prev-legend-label { flex: 1; color: var(--text-muted); }
+  .prev-legend-val { color: var(--text); font-weight: 500; font-variant-numeric: tabular-nums; }
+  .prev-legend-pct { color: var(--text-muted); font-size: 11px; min-width: 34px; text-align: right; }
+
+  /* Buffer row */
+  .prev-buffer-row td { background: rgba(196,163,90,0.05) !important; font-style: italic; color: var(--text-muted); }
+  .prev-buffer-row:hover td { background: rgba(196,163,90,0.10) !important; }
+
   /* MODAL */
   .modal-overlay {
     display: none; position: fixed; inset: 0; background: rgba(44,36,32,0.45);
@@ -738,6 +834,7 @@
     <button class="tab-btn" onclick="switchTab('invitati',this)">👥 Invitati <span id="tab-inv-count" style="font-size:11px;background:var(--rose-pale);color:var(--rose);border-radius:100px;padding:1px 7px;margin-left:2px"></span></button>
     <button class="tab-btn" onclick="switchTab('fornitori',this)">🤝 Fornitori <span id="tab-forn-count" style="font-size:11px;background:var(--rose-pale);color:var(--rose);border-radius:100px;padding:1px 7px;margin-left:2px"></span></button>
     <button class="tab-btn" onclick="switchTab('documenti',this)">📁 Documenti <span id="tab-doc-count" style="font-size:11px;background:var(--rose-pale);color:var(--rose);border-radius:100px;padding:1px 7px;margin-left:2px"></span></button>
+    <button class="tab-btn" onclick="switchTab('preventivo',this)">💰 Preventivo</button>
     <div style="flex:1"></div>
     <button class="btn-export" onclick="exportData()">⬇ Esporta tutto</button>
     <button class="btn-export" onclick="importDataTrigger()">⬆ Importa</button>
@@ -819,9 +916,76 @@
     <div class="doc-grid" id="doc-grid"></div>
   </div>
 
-</div>
+  <!-- TAB: PREVENTIVO -->
+  <div class="tab-panel" id="tab-preventivo">
 
-<!-- MODAL INVITATO -->
+    <!-- Budget cap -->
+    <div class="prev-cap-section">
+      <div>
+        <div class="prev-cap-label">🎯 Budget massimo</div>
+        <div class="prev-cap-sub">Il tetto di spesa che vi siete fissati</div>
+      </div>
+      <div class="prev-cap-input-wrap">
+        <span class="prev-cap-currency">€</span>
+        <input class="prev-cap-input" type="number" min="0" id="prev-cap-input"
+          placeholder="es. 25000"
+          oninput="saveBudgetCap(this.value); renderPreventivo()">
+      </div>
+      <span class="prev-cap-status none" id="prev-cap-status">— Nessun tetto impostato</span>
+      <div class="prev-cap-spacer"></div>
+      <button class="forn-btn" onclick="switchTab('attivita', document.querySelector('.tab-btn'))" style="font-size:12px">
+        ↗ Vai ad Attività
+      </button>
+    </div>
+
+    <!-- KPI cards -->
+    <div class="prev-kpi-bar" id="prev-kpi-bar"></div>
+
+    <!-- Charts row -->
+    <div class="prev-charts-row">
+      <div class="prev-chart-card">
+        <div class="prev-chart-title">Distribuzione per categoria</div>
+        <div class="prev-donut-wrap">
+          <svg id="prev-donut-svg" width="130" height="130" viewBox="0 0 130 130"></svg>
+          <div class="prev-donut-legend" id="prev-donut-legend"></div>
+        </div>
+      </div>
+      <div class="prev-chart-card">
+        <div class="prev-chart-title">Pagato vs Da pagare</div>
+        <div class="prev-donut-wrap">
+          <svg id="prev-donut-pay-svg" width="130" height="130" viewBox="0 0 130 130"></svg>
+          <div class="prev-donut-legend" id="prev-donut-pay-legend"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breakdown table -->
+    <div class="prev-table-wrap">
+      <div class="prev-table-header">
+        <div>
+          <div class="prev-table-title">Breakdown per categoria</div>
+          <div class="prev-table-subtitle">I dati vengono aggregati automaticamente da Attività e Fornitori</div>
+        </div>
+      </div>
+      <table class="prev-table">
+        <thead>
+          <tr>
+            <th>Categoria</th>
+            <th>Fonte</th>
+            <th>Preventivo</th>
+            <th>Pagato</th>
+            <th>Rimanente</th>
+            <th class="prev-bar-cell">Avanz. pag.</th>
+          </tr>
+        </thead>
+        <tbody id="prev-tbody"></tbody>
+        <tfoot id="prev-tfoot"></tfoot>
+      </table>
+    </div>
+
+  </div>
+
+</div>
 <div class="modal-overlay" id="guest-modal">
   <div class="modal-box">
     <button class="modal-close" onclick="closeGuestModal()">✕</button>
@@ -1234,6 +1398,7 @@ function migrateData(d) {
   if (!d.guests) d.guests = [];
   if (!d.fornitori) d.fornitori = [];
   if (!d.documenti) d.documenti = [];
+  if (d.budgetCap === undefined) d.budgetCap = '';
   d.categories.forEach(cat => cat.tasks.forEach(t => {
     if (t.budget === undefined) t.budget = '';
     if (t.paid === undefined) t.paid = '';
@@ -1669,6 +1834,7 @@ function switchTab(tab, btn) {
   if (tab === 'invitati') renderGuestTable();
   if (tab === 'fornitori') renderFornitori();
   if (tab === 'documenti') renderDocumenti();
+  if (tab === 'preventivo') renderPreventivo();
 }
 
 // ====== GUEST DATA ======
@@ -2350,6 +2516,254 @@ function saveDocumento() {
 document.getElementById('doc-modal').addEventListener('click', function(e) {
   if (e.target === this) closeDocModal();
 });
+
+// ====== PREVENTIVO ======
+
+// Palette colori per categoria (cycling)
+const PREV_PALETTE = [
+  '#c9857a','#c4a35a','#7a9e7e','#7a8eb0','#b07a9e','#9eb07a',
+  '#c4907a','#7ab0c4','#b0a07a','#9a7ab0','#7ab09a','#c4c47a'
+];
+
+function saveBudgetCap(val) {
+  data.budgetCap = val;
+  save();
+}
+
+// Aggrega i dati per categoria per la sezione preventivo.
+// Logica integrata: per ogni categoria attività, prende:
+// 1. Il totale dal fornitore SELEZIONATO/CONTRATTO di quella categoria (fonte: fornitori)
+// 2. Se non c'è fornitore selezionato, somma i budget manuali dei task (fonte: attività)
+// "Pagato" = somma paid dei task della categoria
+function getPreventivoData() {
+  // Mappa fornitori selezionati per actCatId
+  // Aggrega sia il totale preventivo sia gli acconti versati
+  const fornSelByActCat = {};
+  (data.fornitori || []).forEach(f => {
+    if (f.stato !== 'selezionato' && f.stato !== 'contratto') return;
+    const conf = getFornCatConfig(f.categoria);
+    if (!conf || !conf.actCatId) return;
+    const totale = calcFornTotale(f);
+    const accontoVersato = f.accontoPagato === 'si' ? parseNum(f.acconto) : 0;
+    if (!fornSelByActCat[conf.actCatId]) {
+      fornSelByActCat[conf.actCatId] = { totale: 0, acconti: 0, nomi: [] };
+    }
+    fornSelByActCat[conf.actCatId].totale   += totale;
+    fornSelByActCat[conf.actCatId].acconti  += accontoVersato;
+    fornSelByActCat[conf.actCatId].nomi.push(f.nome);
+  });
+
+  const rows = data.categories.map(cat => {
+    const tasksBudget = cat.tasks.reduce((s,t) => s + parseNum(t.budget), 0);
+    const tasksPaid   = cat.tasks.reduce((s,t) => s + parseNum(t.paid), 0);
+
+    let preventivo, fonte, fornNomi, pagato;
+    if (fornSelByActCat[cat.id]) {
+      preventivo = fornSelByActCat[cat.id].totale;
+      fornNomi   = fornSelByActCat[cat.id].nomi;
+      fonte      = 'forn';
+      // Pagato = acconti versati al fornitore + eventuali pagamenti manuali nei task
+      pagato = fornSelByActCat[cat.id].acconti + tasksPaid;
+    } else if (tasksBudget > 0) {
+      preventivo = tasksBudget;
+      fonte      = 'man';
+      fornNomi   = [];
+      pagato     = tasksPaid;
+    } else {
+      preventivo = 0;
+      fonte      = 'empty';
+      fornNomi   = [];
+      pagato     = tasksPaid;
+    }
+
+    const rimanente = Math.max(0, preventivo - pagato);
+    const pct       = preventivo > 0 ? Math.min(100, Math.round((pagato / preventivo) * 100)) : 0;
+
+    return { cat, preventivo, pagato, rimanente, pct, fonte, fornNomi };
+  });
+
+  return rows;
+}
+
+function renderPreventivo() {
+  const rows = getPreventivoData();
+  const totalPrev  = rows.reduce((s,r) => s + r.preventivo, 0);
+  const totalPaid  = rows.reduce((s,r) => s + r.pagato, 0);
+  const totalRem   = Math.max(0, totalPrev - totalPaid);
+  const cap        = parseNum(data.budgetCap);
+  const overBudget = cap > 0 ? totalPrev - cap : 0;
+
+  // Popola input cap
+  const capInput = document.getElementById('prev-cap-input');
+  if (capInput && !capInput.matches(':focus')) capInput.value = data.budgetCap || '';
+
+  // Cap status
+  const capStatus = document.getElementById('prev-cap-status');
+  if (capStatus) {
+    if (!cap) {
+      capStatus.textContent = '— Nessun tetto impostato';
+      capStatus.className = 'prev-cap-status none';
+    } else if (overBudget > 0) {
+      capStatus.textContent = `⚠ Sforamento: ${fmt(overBudget)}`;
+      capStatus.className = 'prev-cap-status over';
+    } else if (overBudget > -(cap * 0.1)) {
+      capStatus.textContent = `⚡ Margine residuo: ${fmt(-overBudget)}`;
+      capStatus.className = 'prev-cap-status warn';
+    } else {
+      capStatus.textContent = `✓ Nel budget — ${fmt(-overBudget)} liberi`;
+      capStatus.className = 'prev-cap-status ok';
+    }
+  }
+
+  // KPI
+  const kpiBar = document.getElementById('prev-kpi-bar');
+  if (kpiBar) {
+    const pctPagato = totalPrev > 0 ? Math.round((totalPaid / totalPrev) * 100) : 0;
+    const buffPct = 10;
+    const bufferAmt = Math.round(totalPrev * buffPct / 100);
+    kpiBar.innerHTML = `
+      <div class="prev-kpi-card gold">
+        <span class="prev-kpi-label">Budget massimo</span>
+        <span class="prev-kpi-value gold">${cap > 0 ? fmt(cap) : '—'}</span>
+        <span class="prev-kpi-sub">Tetto di spesa impostato</span>
+      </div>
+      <div class="prev-kpi-card dark">
+        <span class="prev-kpi-label">Totale preventivato</span>
+        <span class="prev-kpi-value">${totalPrev > 0 ? fmt(totalPrev) : '—'}</span>
+        <span class="prev-kpi-sub">Somma di tutti i preventivi</span>
+      </div>
+      <div class="prev-kpi-card sage">
+        <span class="prev-kpi-label">Già pagato</span>
+        <span class="prev-kpi-value sage">${fmt(totalPaid)}</span>
+        <span class="prev-kpi-sub">${pctPagato}% del totale preventivato</span>
+      </div>
+      <div class="prev-kpi-card rose">
+        <span class="prev-kpi-label">Da pagare</span>
+        <span class="prev-kpi-value rose">${fmt(totalRem)}</span>
+        <span class="prev-kpi-sub">Preventivato − già pagato</span>
+      </div>
+      <div class="prev-kpi-card warn">
+        <span class="prev-kpi-label">Buffer consigliato (10%)</span>
+        <span class="prev-kpi-value warn">${totalPrev > 0 ? fmt(bufferAmt) : '—'}</span>
+        <span class="prev-kpi-sub">Riserva per imprevisti</span>
+      </div>
+    `;
+  }
+
+  // Breakdown table
+  const tbody = document.getElementById('prev-tbody');
+  const tfoot = document.getElementById('prev-tfoot');
+  if (tbody) {
+    const fonteLabel = { forn:'Fornitore', man:'Manuale', empty:'—' };
+    const fonteClass = { forn:'forn', man:'man', empty:'empty' };
+    tbody.innerHTML = rows.map((r, idx) => {
+      const color = PREV_PALETTE[idx % PREV_PALETTE.length];
+      const rimanenteCls = r.rimanente > 0 ? 'prev-saldo-pos' : r.rimanente < 0 ? 'prev-saldo-neg' : 'prev-saldo-zero';
+      const fornTag = r.fornNomi.length > 0
+        ? r.fornNomi.map(n => `<span class="prev-forn-tag">${n}</span>`).join('')
+        : '';
+      return `<tr onclick="scrollToCard('${r.cat.id}'); switchTabByName('attivita')" title="Vai a ${r.cat.title}">
+        <td>
+          <div class="prev-cat-name">
+            <div class="prev-cat-emoji-wrap" style="background:${color}22">${r.cat.emoji}</div>
+            <div>
+              <div style="font-weight:500">${r.cat.title}</div>
+              <div style="margin-top:2px">${fornTag}</div>
+            </div>
+          </div>
+        </td>
+        <td><span class="prev-fonte ${fonteClass[r.fonte]}">${fonteLabel[r.fonte]}</span></td>
+        <td>${r.preventivo > 0 ? fmt(r.preventivo) : '<span style="color:#ccc">—</span>'}</td>
+        <td>${r.pagato > 0 ? fmt(r.pagato) : '<span style="color:#ccc">—</span>'}</td>
+        <td><span class="${rimanenteCls}">${r.preventivo > 0 ? fmt(r.rimanente) : '—'}</span></td>
+        <td class="prev-bar-cell">
+          <div style="font-size:11px;color:var(--text-muted)">${r.pct}%</div>
+          <div class="prev-mini-bar"><div class="prev-mini-bar-fill" style="width:${r.pct}%;background:${color}"></div></div>
+        </td>
+      </tr>`;
+    }).join('');
+
+    // Buffer row
+    const bufferAmt = Math.round(totalPrev * 0.1);
+    tbody.innerHTML += `<tr class="prev-buffer-row">
+      <td><div class="prev-cat-name"><div class="prev-cat-emoji-wrap">🛡</div><div><div>Buffer imprevisti</div><div style="font-size:10px;margin-top:1px">consigliato 10%</div></div></div></td>
+      <td><span class="prev-fonte empty">Auto</span></td>
+      <td>${totalPrev > 0 ? fmt(bufferAmt) : '—'}</td>
+      <td>—</td><td>—</td>
+      <td class="prev-bar-cell"></td>
+    </tr>`;
+  }
+  if (tfoot) {
+    const bufferAmt = Math.round(totalPrev * 0.1);
+    tfoot.innerHTML = `<tr class="total-row">
+      <td colspan="2">TOTALE</td>
+      <td>${fmt(totalPrev)}</td>
+      <td>${fmt(totalPaid)}</td>
+      <td><span class="${totalRem > 0 ? 'prev-saldo-pos' : 'prev-saldo-zero'}">${fmt(totalRem)}</span></td>
+      <td class="prev-bar-cell">
+        <div style="font-size:11px;color:var(--text-muted)">${totalPrev > 0 ? Math.round((totalPaid/totalPrev)*100) : 0}%</div>
+        <div class="prev-mini-bar"><div class="prev-mini-bar-fill" style="width:${totalPrev > 0 ? Math.round((totalPaid/totalPrev)*100) : 0}%;background:var(--sage)"></div></div>
+      </td>
+    </tr>`;
+  }
+
+  // Charts
+  renderPrevDonut('prev-donut-svg', 'prev-donut-legend', rows.filter(r=>r.preventivo>0), 'preventivo');
+  renderPrevDonut('prev-donut-pay-svg', 'prev-donut-pay-legend', [
+    { cat:{emoji:'✓', title:'Già pagato'}, value: totalPaid, color: '#7a9e7e' },
+    { cat:{emoji:'○', title:'Da pagare'}, value: totalRem, color: '#e8ddd4' },
+  ], 'value', true);
+}
+
+function renderPrevDonut(svgId, legendId, rows, valueKey, directColor) {
+  const svg = document.getElementById(svgId);
+  const legendEl = document.getElementById(legendId);
+  if (!svg || !legendEl) return;
+
+  const total = rows.reduce((s,r) => s + (r[valueKey]||0), 0);
+  if (total === 0) { svg.innerHTML = ''; legendEl.innerHTML = '<span style="color:var(--text-muted);font-size:12px">Nessun dato ancora</span>'; return; }
+
+  const cx = 65, cy = 65, r = 50, innerR = 28;
+  let startAngle = -Math.PI / 2;
+  let paths = '';
+
+  rows.forEach((row, i) => {
+    const val = row[valueKey] || 0;
+    if (val === 0) return;
+    const angle = (val / total) * 2 * Math.PI;
+    const endAngle = startAngle + angle;
+    const x1 = cx + r * Math.cos(startAngle), y1 = cy + r * Math.sin(startAngle);
+    const x2 = cx + r * Math.cos(endAngle),   y2 = cy + r * Math.sin(endAngle);
+    const ix1 = cx + innerR * Math.cos(startAngle), iy1 = cy + innerR * Math.sin(startAngle);
+    const ix2 = cx + innerR * Math.cos(endAngle),   iy2 = cy + innerR * Math.sin(endAngle);
+    const large = angle > Math.PI ? 1 : 0;
+    const color = directColor ? row.color : PREV_PALETTE[i % PREV_PALETTE.length];
+    paths += `<path d="M ${ix1} ${iy1} L ${x1} ${y1} A ${r} ${r} 0 ${large} 1 ${x2} ${y2} L ${ix2} ${iy2} A ${innerR} ${innerR} 0 ${large} 0 ${ix1} ${iy1} Z" fill="${color}" opacity="0.9"/>`;
+    startAngle = endAngle;
+  });
+
+  svg.innerHTML = paths + `<text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="middle" font-family="Playfair Display,serif" font-size="13" fill="#2c2420">${Math.round((rows.reduce((s,r)=>s+(r[valueKey]||0),0)/total)*100)}%</text>`;
+
+  legendEl.innerHTML = rows.filter(r=>(r[valueKey]||0)>0).map((row,i) => {
+    const val = row[valueKey] || 0;
+    const pct = Math.round((val/total)*100);
+    const color = directColor ? row.color : PREV_PALETTE[i % PREV_PALETTE.length];
+    const label = directColor ? row.cat.title : row.cat.title;
+    return `<div class="prev-legend-row">
+      <div class="prev-legend-dot" style="background:${color}"></div>
+      <span class="prev-legend-label">${row.cat.emoji} ${label}</span>
+      <span class="prev-legend-val">${fmt(val)}</span>
+      <span class="prev-legend-pct">${pct}%</span>
+    </div>`;
+  }).join('');
+}
+
+function switchTabByName(tabName) {
+  const btns = document.querySelectorAll('.tab-btn');
+  const tabMap = { attivita:0, invitati:1, fornitori:2, documenti:3, preventivo:4 };
+  const idx = tabMap[tabName];
+  if (idx !== undefined && btns[idx]) switchTab(tabName, btns[idx]);
+}
 
 // ====== INIT ======
 updateCountdown();
