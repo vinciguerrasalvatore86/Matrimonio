@@ -311,7 +311,7 @@
   #save-toast.show { opacity: 1; transform: translateY(0); }
 
   /* ====== TABS ====== */
-  .main-tabs { display: flex; gap: 4px; margin-bottom: 28px; border-bottom: 2px solid var(--border); }
+  .main-tabs { display: flex; gap: 4px; margin-bottom: 28px; border-bottom: 2px solid var(--border); flex-wrap: wrap; }
   .tab-btn {
     padding: 10px 22px; border: none; background: none; font-family: 'DM Sans', sans-serif;
     font-size: 14px; font-weight: 500; color: var(--text-muted); cursor: pointer;
@@ -324,9 +324,7 @@
   .tab-panel.active { display: block; }
 
   /* ====== INVITATI STYLES ====== */
-  .inv-summary-bar {
-    display: flex; gap: 14px; margin-bottom: 24px; flex-wrap: wrap;
-  }
+  .inv-summary-bar { display: flex; gap: 14px; margin-bottom: 24px; flex-wrap: wrap; }
   .inv-sum-card {
     flex: 1; min-width: 120px; background: #fff; border-radius: 12px;
     border: 1px solid var(--border); padding: 14px 18px; text-align: center;
@@ -373,15 +371,11 @@
   .inv-table tr.hidden-row { display: none; }
 
   .guest-nome { font-weight: 500; color: var(--text); }
-  .guest-type-badge {
-    font-size: 10px; padding: 2px 8px; border-radius: 100px; font-weight: 500; white-space: nowrap;
-  }
+  .guest-type-badge { font-size: 10px; padding: 2px 8px; border-radius: 100px; font-weight: 500; white-space: nowrap; }
   .type-adulto { background: var(--gold-light); color: #8a6a20; }
   .type-bambino { background: var(--sage-light); color: #3d6b41; }
 
-  .prob-badge {
-    font-size: 10px; padding: 2px 8px; border-radius: 100px; font-weight: 500; white-space: nowrap;
-  }
+  .prob-badge { font-size: 10px; padding: 2px 8px; border-radius: 100px; font-weight: 500; white-space: nowrap; }
   .prob-alta { background: #e8f5e9; color: #2e7d32; }
   .prob-media { background: var(--gold-light); color: #8a6a20; }
   .prob-bassa { background: #fde8e8; color: #c0392b; }
@@ -390,9 +384,7 @@
   .status-check.on { background: var(--sage); border-color: var(--sage); color: #fff; }
   .status-check:hover { border-color: var(--sage); }
 
-  .risposta-badge {
-    font-size: 11px; padding: 2px 10px; border-radius: 100px; font-weight: 500; cursor: pointer; transition: all 0.2s;
-  }
+  .risposta-badge { font-size: 11px; padding: 2px 10px; border-radius: 100px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
   .risposta-si { background: #e8f5e9; color: #2e7d32; }
   .risposta-no { background: #fde8e8; color: #c0392b; }
   .risposta-attesa { background: var(--border); color: var(--text-muted); }
@@ -404,6 +396,171 @@
   .btn-edit-guest:hover { background: var(--gold-light); }
   .btn-del-guest:hover { background: #fde8e8; }
 
+  /* ====== FORNITORI STYLES ====== */
+  .forn-summary-bar { display: flex; gap: 14px; margin-bottom: 24px; flex-wrap: wrap; }
+  .forn-sum-card {
+    flex: 1; min-width: 140px; background: #fff; border-radius: 12px;
+    border: 1px solid var(--border); padding: 14px 18px; text-align: center;
+  }
+  .forn-sum-num { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--text); display: block; }
+  .forn-sum-num.gold { color: var(--gold); }
+  .forn-sum-num.sage { color: var(--sage); }
+  .forn-sum-num.rose { color: var(--rose); }
+  .forn-sum-label { font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; display: block; }
+
+  .forn-toolbar { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; align-items: center; }
+  .forn-filter-btn {
+    padding: 6px 14px; border-radius: 100px; border: 1.5px solid var(--border);
+    background: #fff; font-family: 'DM Sans', sans-serif; font-size: 12px;
+    cursor: pointer; color: var(--text-muted); transition: all 0.2s; white-space: nowrap;
+  }
+  .forn-filter-btn:hover { border-color: var(--rose-light); color: var(--rose); }
+  .forn-filter-btn.active { background: var(--rose); border-color: var(--rose); color: #fff; }
+  .btn-add-forn {
+    padding: 8px 18px; background: var(--rose); color: #fff; border: none;
+    border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 13px;
+    cursor: pointer; font-weight: 500; transition: background 0.2s;
+  }
+  .btn-add-forn:hover { background: #b57269; }
+
+  /* Fornitori per categoria */
+  .forn-cat-section { margin-bottom: 28px; }
+  .forn-cat-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    padding-bottom: 10px; border-bottom: 2px solid var(--border);
+  }
+  .forn-cat-emoji { font-size: 18px; }
+  .forn-cat-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; }
+  .forn-cat-count { font-size: 11px; color: var(--text-muted); background: var(--border); border-radius: 100px; padding: 2px 8px; }
+  .forn-cat-selected { font-size: 11px; background: var(--sage-light); color: #3d6b41; border-radius: 100px; padding: 2px 10px; font-weight: 500; }
+  .forn-cat-spacer { flex: 1; }
+
+  .forn-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+
+  .forn-card {
+    background: #fff; border-radius: 14px; border: 1.5px solid var(--border);
+    overflow: hidden; box-shadow: var(--shadow-sm); transition: all 0.2s; position: relative;
+  }
+  .forn-card:hover { box-shadow: var(--shadow); border-color: var(--rose-light); }
+  .forn-card.selezionato { border-color: var(--sage); box-shadow: 0 0 0 2px rgba(122,158,126,0.2); }
+  .forn-card.escluso { opacity: 0.5; }
+  .forn-card.hidden { display: none; }
+
+  .forn-card-header { padding: 14px 16px 10px; display: flex; align-items: flex-start; gap: 10px; }
+  .forn-card-nome { font-weight: 600; font-size: 15px; color: var(--text); flex: 1; }
+  .forn-card-contatto { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  .forn-stato-badge {
+    font-size: 10px; padding: 3px 9px; border-radius: 100px; font-weight: 500;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .stato-valutazione { background: var(--border); color: var(--text-muted); }
+  .stato-contattato { background: var(--gold-light); color: #8a6a20; }
+  .stato-preventivo { background: #e3f0ff; color: #1a5fa8; }
+  .stato-selezionato { background: #e8f5e9; color: #2e7d32; }
+  .stato-contratto { background: #e8f5e9; color: #1b5e20; font-weight: 700; }
+  .stato-escluso { background: #fde8e8; color: #c0392b; }
+
+  .forn-card-divider { height: 1px; background: var(--border); margin: 0 16px; }
+
+  .forn-card-body { padding: 12px 16px; }
+
+  .forn-price-row { display: flex; gap: 8px; align-items: stretch; margin-bottom: 10px; flex-wrap: wrap; }
+  .forn-price-box {
+    flex: 1; min-width: 90px; background: var(--ivory); border-radius: 8px;
+    padding: 8px 10px; text-align: center;
+  }
+  .forn-price-lbl { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 3px; }
+  .forn-price-val { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--text); display: block; }
+  .forn-price-val.gold { color: var(--gold); }
+  .forn-price-val.rose { color: var(--rose); }
+  .forn-price-val.sage { color: var(--sage); }
+  .forn-price-sub { font-size: 10px; color: var(--text-muted); margin-top: 1px; display: block; }
+
+  .forn-rating { display: flex; gap: 2px; margin-bottom: 8px; }
+  .forn-star { font-size: 14px; color: var(--border); cursor: pointer; transition: color 0.15s; }
+  .forn-star.on { color: var(--gold); }
+  .forn-star:hover, .forn-star:hover ~ .forn-star { color: var(--border) !important; }
+  .forn-rating:hover .forn-star { color: var(--gold); }
+  .forn-rating .forn-star:hover ~ .forn-star { color: var(--border); }
+
+  .forn-note { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.5; }
+  .forn-note-empty { font-style: italic; opacity: 0.6; }
+
+  .forn-card-actions { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+  .forn-btn {
+    padding: 5px 12px; border-radius: 100px; font-family: 'DM Sans', sans-serif;
+    font-size: 11px; cursor: pointer; border: 1.5px solid var(--border);
+    background: #fff; color: var(--text-muted); transition: all 0.2s; font-weight: 500;
+  }
+  .forn-btn:hover { border-color: var(--rose); color: var(--rose); }
+  .forn-btn.primary { background: var(--rose); border-color: var(--rose); color: #fff; }
+  .forn-btn.primary:hover { background: #b57269; }
+  .forn-btn.sage-btn { background: var(--sage); border-color: var(--sage); color: #fff; }
+  .forn-btn.sage-btn:hover { background: #5d8661; }
+  .forn-btn.danger { border-color: #fde8e8; color: #c0392b; }
+  .forn-btn.danger:hover { background: #fde8e8; }
+
+  .forn-selected-badge {
+    position: absolute; top: 12px; right: 12px;
+    background: var(--sage); color: #fff; font-size: 10px; font-weight: 700;
+    padding: 3px 9px; border-radius: 100px; letter-spacing: 0.5px;
+  }
+
+  /* ====== DOCUMENTI STYLES ====== */
+  .doc-toolbar { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; align-items: center; }
+  .doc-filter-btn {
+    padding: 6px 14px; border-radius: 100px; border: 1.5px solid var(--border);
+    background: #fff; font-family: 'DM Sans', sans-serif; font-size: 12px;
+    cursor: pointer; color: var(--text-muted); transition: all 0.2s; white-space: nowrap;
+  }
+  .doc-filter-btn:hover { border-color: var(--rose-light); color: var(--rose); }
+  .doc-filter-btn.active { background: var(--rose); border-color: var(--rose); color: #fff; }
+  .btn-add-doc {
+    padding: 8px 18px; background: var(--rose); color: #fff; border: none;
+    border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 13px;
+    cursor: pointer; font-weight: 500; transition: background 0.2s;
+  }
+  .btn-add-doc:hover { background: #b57269; }
+
+  .doc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  .doc-card {
+    background: #fff; border-radius: 14px; border: 1.5px solid var(--border);
+    padding: 16px; box-shadow: var(--shadow-sm); transition: all 0.2s;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .doc-card:hover { box-shadow: var(--shadow); border-color: var(--rose-light); }
+  .doc-card.hidden { display: none; }
+
+  .doc-card-top { display: flex; align-items: flex-start; gap: 10px; }
+  .doc-icon { font-size: 24px; flex-shrink: 0; }
+  .doc-nome { font-weight: 600; font-size: 14px; color: var(--text); flex: 1; }
+  .doc-tipo-badge {
+    font-size: 10px; padding: 2px 8px; border-radius: 100px; font-weight: 500; white-space: nowrap;
+  }
+  .tipo-preventivo { background: #e3f0ff; color: #1a5fa8; }
+  .tipo-contratto { background: #e8f5e9; color: #2e7d32; }
+  .tipo-ricevuta { background: var(--gold-light); color: #8a6a20; }
+  .tipo-ispirazione { background: var(--rose-pale); color: var(--rose); }
+  .tipo-altro { background: var(--border); color: var(--text-muted); }
+
+  .doc-meta { font-size: 11px; color: var(--text-muted); display: flex; gap: 10px; flex-wrap: wrap; }
+  .doc-fornitore-tag { background: var(--ivory); border-radius: 4px; padding: 1px 6px; }
+  .doc-note { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .doc-actions { display: flex; gap: 6px; margin-top: 2px; }
+  .doc-btn {
+    padding: 5px 12px; border-radius: 100px; font-family: 'DM Sans', sans-serif;
+    font-size: 11px; cursor: pointer; border: 1.5px solid var(--border);
+    background: #fff; color: var(--text-muted); transition: all 0.2s;
+  }
+  .doc-btn:hover { border-color: var(--rose); color: var(--rose); }
+  .doc-btn.danger:hover { background: #fde8e8; border-color: #fde8e8; color: #c0392b; }
+  .doc-empty {
+    text-align: center; padding: 48px 32px; color: var(--text-muted); font-size: 14px;
+    background: #fff; border-radius: 16px; border: 1px dashed var(--border);
+  }
+  .doc-empty-icon { font-size: 36px; margin-bottom: 12px; display: block; }
+
   /* MODAL */
   .modal-overlay {
     display: none; position: fixed; inset: 0; background: rgba(44,36,32,0.45);
@@ -411,20 +568,22 @@
   }
   .modal-overlay.open { display: flex; }
   .modal-box {
-    background: #fff; border-radius: 20px; padding: 32px; width: 100%; max-width: 520px;
+    background: #fff; border-radius: 20px; padding: 32px; width: 100%; max-width: 560px;
     box-shadow: 0 20px 60px rgba(44,36,32,0.2); position: relative;
+    max-height: 90vh; overflow-y: auto;
   }
   .modal-title { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 24px; }
   .modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); }
   .modal-close:hover { color: var(--text); }
   .modal-field { margin-bottom: 16px; }
   .modal-label { font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; display: block; }
-  .modal-input, .modal-select {
+  .modal-input, .modal-select, .modal-textarea {
     width: 100%; border: 1.5px solid var(--border); border-radius: 10px; padding: 9px 14px;
     font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; background: var(--cream);
     color: var(--text); transition: border-color 0.2s;
   }
-  .modal-input:focus, .modal-select:focus { border-color: var(--rose-light); background: #fff; }
+  .modal-input:focus, .modal-select:focus, .modal-textarea:focus { border-color: var(--rose-light); background: #fff; }
+  .modal-textarea { resize: vertical; min-height: 72px; }
   .modal-row { display: flex; gap: 14px; }
   .modal-row .modal-field { flex: 1; }
   .modal-actions { display: flex; gap: 10px; margin-top: 24px; justify-content: flex-end; }
@@ -432,6 +591,18 @@
   .btn-modal-cancel:hover { border-color: var(--rose); color: var(--rose); }
   .btn-modal-save { padding: 9px 22px; background: var(--rose); color: #fff; border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; font-weight: 500; }
   .btn-modal-save:hover { background: #b57269; }
+
+  /* Prezzo calcolato box */
+  .prezzo-calc-box {
+    background: var(--gold-light); border: 1px solid var(--gold); border-radius: 10px;
+    padding: 12px 16px; margin-top: 12px; display: none;
+  }
+  .prezzo-calc-box.visible { display: block; }
+  .prezzo-calc-label { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: #8a6a20; margin-bottom: 4px; }
+  .prezzo-calc-value { font-family: 'Playfair Display', serif; font-size: 22px; color: #6a4e10; }
+  .prezzo-calc-detail { font-size: 12px; color: #8a6a20; margin-top: 2px; }
+
+  .modal-divider { border: none; border-top: 1px dashed var(--border); margin: 18px 0; }
 
   @media (max-width: 700px) {
     header, .countdown-bar, .progress-section, .budget-panel, .main { padding-left: 16px; padding-right: 16px; }
@@ -442,6 +613,9 @@
     .inv-table th:nth-child(3), .inv-table td:nth-child(3),
     .inv-table th:nth-child(5), .inv-table td:nth-child(5) { display: none; }
     .inv-search { width: 140px; }
+    .forn-cards { grid-template-columns: 1fr; }
+    .doc-grid { grid-template-columns: 1fr; }
+    .modal-row { flex-direction: column; }
   }
 </style>
 </head>
@@ -562,6 +736,8 @@
   <div class="main-tabs">
     <button class="tab-btn active" onclick="switchTab('attivita',this)">📋 Attività</button>
     <button class="tab-btn" onclick="switchTab('invitati',this)">👥 Invitati <span id="tab-inv-count" style="font-size:11px;background:var(--rose-pale);color:var(--rose);border-radius:100px;padding:1px 7px;margin-left:2px"></span></button>
+    <button class="tab-btn" onclick="switchTab('fornitori',this)">🤝 Fornitori <span id="tab-forn-count" style="font-size:11px;background:var(--rose-pale);color:var(--rose);border-radius:100px;padding:1px 7px;margin-left:2px"></span></button>
+    <button class="tab-btn" onclick="switchTab('documenti',this)">📁 Documenti <span id="tab-doc-count" style="font-size:11px;background:var(--rose-pale);color:var(--rose);border-radius:100px;padding:1px 7px;margin-left:2px"></span></button>
     <div style="flex:1"></div>
     <button class="btn-export" onclick="exportData()">⬇ Esporta tutto</button>
     <button class="btn-export" onclick="importDataTrigger()">⬆ Importa</button>
@@ -581,11 +757,7 @@
 
   <!-- TAB: INVITATI -->
   <div class="tab-panel" id="tab-invitati">
-
-    <!-- Summary cards -->
     <div class="inv-summary-bar" id="inv-summary"></div>
-
-    <!-- Toolbar -->
     <div class="inv-toolbar">
       <input class="inv-search" type="text" id="inv-search" placeholder="🔍 Cerca nome..." oninput="renderGuestTable()">
       <button class="inv-filter-btn active" onclick="setGuestFilter('tutti',this)">Tutti</button>
@@ -596,8 +768,6 @@
       <div class="inv-toolbar-spacer"></div>
       <button class="btn-add-guest" onclick="openGuestModal()">+ Aggiungi invitato</button>
     </div>
-
-    <!-- Table -->
     <div class="inv-table-wrap">
       <table class="inv-table" id="inv-table">
         <thead>
@@ -614,6 +784,39 @@
         <tbody id="inv-tbody"></tbody>
       </table>
     </div>
+  </div>
+
+  <!-- TAB: FORNITORI -->
+  <div class="tab-panel" id="tab-fornitori">
+    <!-- Summary -->
+    <div class="forn-summary-bar" id="forn-summary"></div>
+
+    <!-- Toolbar -->
+    <div class="forn-toolbar">
+      <button class="forn-filter-btn active" onclick="setFornFilter('tutti',this)">Tutti</button>
+      <button class="forn-filter-btn" onclick="setFornFilter('in-valutazione',this)">In valutazione</button>
+      <button class="forn-filter-btn" onclick="setFornFilter('selezionato',this)">Selezionati</button>
+      <button class="forn-filter-btn" onclick="setFornFilter('contratto',this)">Contratto firmato</button>
+      <div class="inv-toolbar-spacer"></div>
+      <button class="btn-add-forn" onclick="openFornModal()">+ Aggiungi fornitore</button>
+    </div>
+
+    <!-- Fornitori per categoria -->
+    <div id="forn-container"></div>
+  </div>
+
+  <!-- TAB: DOCUMENTI -->
+  <div class="tab-panel" id="tab-documenti">
+    <div class="doc-toolbar">
+      <button class="doc-filter-btn active" onclick="setDocFilter('tutti',this)">Tutti</button>
+      <button class="doc-filter-btn" onclick="setDocFilter('preventivo',this)">Preventivi</button>
+      <button class="doc-filter-btn" onclick="setDocFilter('contratto',this)">Contratti</button>
+      <button class="doc-filter-btn" onclick="setDocFilter('ricevuta',this)">Ricevute</button>
+      <button class="doc-filter-btn" onclick="setDocFilter('ispirazione',this)">Ispirazione</button>
+      <div class="inv-toolbar-spacer"></div>
+      <button class="btn-add-doc" onclick="openDocModal()">+ Aggiungi documento</button>
+    </div>
+    <div class="doc-grid" id="doc-grid"></div>
   </div>
 
 </div>
@@ -682,13 +885,223 @@
   </div>
 </div>
 
+<!-- MODAL FORNITORE -->
+<div class="modal-overlay" id="forn-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeFornModal()">✕</button>
+    <div class="modal-title" id="forn-modal-title">✦ Aggiungi fornitore</div>
+    <input type="hidden" id="forn-modal-id">
+
+    <div class="modal-row">
+      <div class="modal-field" style="flex:2">
+        <label class="modal-label">Nome azienda / professionista</label>
+        <input class="modal-input" type="text" id="forn-nome" placeholder="es. Studio Fotografico Rossi">
+      </div>
+      <div class="modal-field">
+        <label class="modal-label">Categoria</label>
+        <select class="modal-select" id="forn-categoria">
+          <option value="location">📍 Location & Venue</option>
+          <option value="catering">🍽️ Catering</option>
+          <option value="torta">🎂 Torta nuziale</option>
+          <option value="foto">📸 Fotografo</option>
+          <option value="video">🎬 Videomaker</option>
+          <option value="abito-sposa">👗 Abito sposa</option>
+          <option value="abito-sposo">🤵 Abito sposo</option>
+          <option value="hair-makeup">💄 Hair & Make-up</option>
+          <option value="fiori">🌸 Fiori & Decorazioni</option>
+          <option value="musica">🎵 Musica / DJ / Band</option>
+          <option value="auto">🚗 Auto sposi</option>
+          <option value="bomboniere">🎁 Bomboniere</option>
+          <option value="partecipazioni">💌 Partecipazioni</option>
+          <option value="fedi">💍 Fedi nuziali</option>
+          <option value="luna">🌍 Luna di miele</option>
+          <option value="altro">✦ Altro</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="modal-row">
+      <div class="modal-field">
+        <label class="modal-label">Telefono</label>
+        <input class="modal-input" type="text" id="forn-tel" placeholder="es. 349 123 4567">
+      </div>
+      <div class="modal-field">
+        <label class="modal-label">Email</label>
+        <input class="modal-input" type="email" id="forn-email" placeholder="es. info@studio.it">
+      </div>
+    </div>
+
+    <div class="modal-row">
+      <div class="modal-field">
+        <label class="modal-label">Sito web / Instagram</label>
+        <input class="modal-input" type="url" id="forn-sito" placeholder="https://...">
+      </div>
+      <div class="modal-field">
+        <label class="modal-label">Stato</label>
+        <select class="modal-select" id="forn-stato">
+          <option value="valutazione">In valutazione</option>
+          <option value="contattato">Contattato</option>
+          <option value="preventivo">Preventivo ricevuto</option>
+          <option value="selezionato">Selezionato ✓</option>
+          <option value="contratto">Contratto firmato</option>
+          <option value="escluso">Escluso</option>
+        </select>
+      </div>
+    </div>
+
+    <hr class="modal-divider">
+
+    <div class="modal-row">
+      <div class="modal-field">
+        <label class="modal-label">Tipo di prezzo</label>
+        <select class="modal-select" id="forn-tipo-prezzo" onchange="aggiornaPrezzoCalc()">
+          <option value="fisso">Prezzo fisso</option>
+          <option value="persona">Per persona × invitati</option>
+          <option value="unita">Per unità (quantità manuale)</option>
+        </select>
+      </div>
+      <div class="modal-field">
+        <label class="modal-label" id="forn-importo-lbl">Importo (€)</label>
+        <input class="modal-input" type="number" min="0" id="forn-importo" placeholder="0" oninput="aggiornaPrezzoCalc()">
+      </div>
+      <div class="modal-field" id="forn-qty-field" style="display:none">
+        <label class="modal-label">Quantità</label>
+        <input class="modal-input" type="number" min="1" id="forn-qty" placeholder="1" oninput="aggiornaPrezzoCalc()">
+      </div>
+    </div>
+
+    <!-- Prezzo calcolato (visibile solo per tipo persona/unità) -->
+    <div class="prezzo-calc-box" id="prezzo-calc-box">
+      <div class="prezzo-calc-label">Totale calcolato</div>
+      <div class="prezzo-calc-value" id="prezzo-calc-value">€ 0</div>
+      <div class="prezzo-calc-detail" id="prezzo-calc-detail"></div>
+    </div>
+
+    <div class="modal-row" style="margin-top:14px">
+      <div class="modal-field">
+        <label class="modal-label">Acconto richiesto (€)</label>
+        <input class="modal-input" type="number" min="0" id="forn-acconto" placeholder="0">
+      </div>
+      <div class="modal-field">
+        <label class="modal-label">Acconto versato?</label>
+        <select class="modal-select" id="forn-acconto-pagato">
+          <option value="no">No</option>
+          <option value="si">Sì</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="modal-field">
+      <label class="modal-label">Note / impressioni</label>
+      <textarea class="modal-textarea" id="forn-note" placeholder="Impressioni, dettagli offerta, cosa è incluso…"></textarea>
+    </div>
+
+    <!-- Checkbox: propaga budget ad attività -->
+    <div id="forn-propaga-wrap" style="display:none; margin-top:8px;">
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;color:var(--sage);">
+        <input type="checkbox" id="forn-propaga" style="width:16px;height:16px;accent-color:var(--sage);">
+        Aggiorna automaticamente il preventivo nella tab Attività per questa categoria
+      </label>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:4px;margin-left:24px;">
+        Sovrascrive il campo "Preventivo" delle attività di questa categoria con il totale calcolato.
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn-modal-cancel" onclick="closeFornModal()">Annulla</button>
+      <button class="btn-modal-save" onclick="saveFornitore()">Salva</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DOCUMENTO -->
+<div class="modal-overlay" id="doc-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeDocModal()">✕</button>
+    <div class="modal-title" id="doc-modal-title">📁 Aggiungi documento</div>
+    <input type="hidden" id="doc-modal-id">
+
+    <div class="modal-field">
+      <label class="modal-label">Nome documento</label>
+      <input class="modal-input" type="text" id="doc-nome" placeholder="es. Preventivo Villa Incanto">
+    </div>
+
+    <div class="modal-row">
+      <div class="modal-field">
+        <label class="modal-label">Tipo</label>
+        <select class="modal-select" id="doc-tipo">
+          <option value="preventivo">Preventivo</option>
+          <option value="contratto">Contratto</option>
+          <option value="ricevuta">Ricevuta / Pagamento</option>
+          <option value="ispirazione">Ispirazione / Moodboard</option>
+          <option value="altro">Altro</option>
+        </select>
+      </div>
+      <div class="modal-field">
+        <label class="modal-label">Categoria / Fornitore</label>
+        <select class="modal-select" id="doc-fornitore">
+          <option value="">— Nessun fornitore —</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="modal-field">
+      <label class="modal-label">Link al documento (Google Drive, Dropbox, PDF online…)</label>
+      <input class="modal-input" type="url" id="doc-link" placeholder="https://drive.google.com/...">
+    </div>
+
+    <div class="modal-row">
+      <div class="modal-field">
+        <label class="modal-label">Data documento</label>
+        <input class="modal-input" type="date" id="doc-data">
+      </div>
+      <div class="modal-field">
+        <label class="modal-label">Importo (€, se applicabile)</label>
+        <input class="modal-input" type="number" min="0" id="doc-importo" placeholder="0">
+      </div>
+    </div>
+
+    <div class="modal-field">
+      <label class="modal-label">Note</label>
+      <textarea class="modal-textarea" id="doc-note" placeholder="Descrizione, dettagli importanti…"></textarea>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn-modal-cancel" onclick="closeDocModal()">Annulla</button>
+      <button class="btn-modal-save" onclick="saveDocumento()">Salva</button>
+    </div>
+  </div>
+</div>
+
 <div id="save-toast">✓ Salvato</div>
 
 <script>
+// ====== FORNITORI CATEGORIES CONFIG ======
+const FORN_CATEGORIE = [
+  { id:'location',       emoji:'📍', label:'Location & Venue',    tipoDefault:'persona', actCatId:'location' },
+  { id:'catering',       emoji:'🍽️', label:'Catering',            tipoDefault:'persona', actCatId:'catering' },
+  { id:'torta',          emoji:'🎂', label:'Torta nuziale',        tipoDefault:'fisso',   actCatId:'catering' },
+  { id:'foto',           emoji:'📸', label:'Fotografo',            tipoDefault:'fisso',   actCatId:'foto' },
+  { id:'video',          emoji:'🎬', label:'Videomaker',           tipoDefault:'fisso',   actCatId:'foto' },
+  { id:'abito-sposa',    emoji:'👗', label:'Abito sposa',          tipoDefault:'fisso',   actCatId:'outfit' },
+  { id:'abito-sposo',    emoji:'🤵', label:'Abito sposo',          tipoDefault:'fisso',   actCatId:'outfit' },
+  { id:'hair-makeup',    emoji:'💄', label:'Hair & Make-up',       tipoDefault:'fisso',   actCatId:'outfit' },
+  { id:'fiori',          emoji:'🌸', label:'Fiori & Decorazioni',  tipoDefault:'fisso',   actCatId:'fiori' },
+  { id:'musica',         emoji:'🎵', label:'Musica / DJ / Band',   tipoDefault:'fisso',   actCatId:'musica' },
+  { id:'auto',           emoji:'🚗', label:'Auto sposi',           tipoDefault:'fisso',   actCatId:'logistica' },
+  { id:'bomboniere',     emoji:'🎁', label:'Bomboniere',           tipoDefault:'unita',   actCatId:'ospiti' },
+  { id:'partecipazioni', emoji:'💌', label:'Partecipazioni',       tipoDefault:'unita',   actCatId:'ospiti' },
+  { id:'fedi',           emoji:'💍', label:'Fedi nuziali',         tipoDefault:'fisso',   actCatId:'fedi' },
+  { id:'luna',           emoji:'🌍', label:'Luna di miele',        tipoDefault:'fisso',   actCatId:'luna' },
+  { id:'altro',          emoji:'✦',  label:'Altro',                tipoDefault:'fisso',   actCatId:null },
+];
+
 // ====== DEFAULT DATA ======
 const DEFAULT_DATA = {
   weddingDate: '2027-05-21',
   guests: [],
+  fornitori: [],
+  documenti: [],
   categories: [
     { id:'location', emoji:'📍', title:'Location & Venue', tasks:[
       { id:'l1', title:'Visitare e confrontare le location', priority:'high', done:false, notes:'', link:'', budget:'', paid:'' },
@@ -804,8 +1217,23 @@ function fmt(n) {
 }
 function parseNum(v) { return parseFloat(String(v).replace(',','.')) || 0; }
 
+function getTotalGuests() { return (data.guests || []).length; }
+
+function calcFornTotale(f) {
+  const imp = parseNum(f.importo);
+  if (f.tipoPrezzo === 'persona') return imp * getTotalGuests();
+  if (f.tipoPrezzo === 'unita') return imp * (parseNum(f.qty) || 1);
+  return imp;
+}
+
+function getFornCatConfig(catId) {
+  return FORN_CATEGORIE.find(c => c.id === catId) || FORN_CATEGORIE[FORN_CATEGORIE.length - 1];
+}
+
 function migrateData(d) {
   if (!d.guests) d.guests = [];
+  if (!d.fornitori) d.fornitori = [];
+  if (!d.documenti) d.documenti = [];
   d.categories.forEach(cat => cat.tasks.forEach(t => {
     if (t.budget === undefined) t.budget = '';
     if (t.paid === undefined) t.paid = '';
@@ -837,10 +1265,8 @@ async function loadFromGist() {
 
 // ====== GIST SAVE ======
 function save() {
-  // Always keep a local copy as fallback
   localStorage.setItem('matrimonio-v2', JSON.stringify(data));
   showToast();
-  // Debounce remote save: 1.5s after last change
   clearTimeout(_saveTimer);
   _saveTimer = setTimeout(saveToGist, 1500);
 }
@@ -1000,7 +1426,7 @@ function buildTaskHTML(catId, t) {
   `;
 }
 
-// ====== ACTIONS ======
+// ====== TASK ACTIONS ======
 function toggleTask(catId, taskId) {
   const cat = data.categories.find(c => c.id===catId);
   const task = cat.tasks.find(t => t.id===taskId);
@@ -1037,7 +1463,6 @@ function updateBudget(catId, taskId, field, val) {
   const cat = data.categories.find(c=>c.id===catId);
   const task = cat.tasks.find(t=>t.id===taskId);
   task[field] = val;
-  // update saldo display
   const bud = parseNum(task.budget);
   const paid = parseNum(task.paid);
   const hasBudget = bud > 0;
@@ -1049,10 +1474,8 @@ function updateBudget(catId, taskId, field, val) {
     saldoEl.textContent = saldo===null ? '—' : (saldo>=0?'− ':'+ ') + fmt(Math.abs(saldo));
     if (saldoLblEl) saldoLblEl.textContent = saldo===null?'—':saldo>=0?'Ancora da pagare':'Pagato in eccesso';
   }
-  // update badge
   const badge = document.getElementById('badge-'+taskId) || document.querySelector(`#task-${taskId} .task-price-badge`);
   if (badge) { badge.textContent = bud > 0 ? fmt(bud) : ''; badge.classList.toggle('visible', bud>0); }
-  // update cat header
   updateCatBudgetHeader(catId);
   updateStats();
   updateBudgetPanel();
@@ -1229,6 +1652,7 @@ function importData(e) {
     try {
       data = migrateData(JSON.parse(ev.target.result));
       save(); render(); updateCountdown(); updateTabCount();
+      renderGuestTable(); renderFornitori(); renderDocumenti();
       alert('✓ Dati importati e sincronizzati!');
     }
     catch { alert('Errore: file non valido.'); }
@@ -1243,6 +1667,8 @@ function switchTab(tab, btn) {
   btn.classList.add('active');
   document.getElementById('tab-' + tab).classList.add('active');
   if (tab === 'invitati') renderGuestTable();
+  if (tab === 'fornitori') renderFornitori();
+  if (tab === 'documenti') renderDocumenti();
 }
 
 // ====== GUEST DATA ======
@@ -1292,23 +1718,23 @@ function buildGuestRow(g) {
     <td><span class="guest-type-badge ${typeClass}">${typeLabel}</span></td>
     <td><span class="prob-badge ${probClass[g.prob]}">${probLabel[g.prob]}</span></td>
     <td>
-      <span class="status-check ${g.avvisato==='si'?'on':''}" onclick="toggleGuestField('${g.id}','avvisato')" title="${g.avvisato==='si'?'Avvisato':'Non ancora avvisato'}">
+      <span class="status-check ${g.avvisato==='si'?'on':''}" onclick="toggleGuestField('${g.id}','avvisato')">
         ${g.avvisato==='si'?'✓':''}
       </span>
     </td>
     <td>
-      <span class="status-check ${g.invito==='si'?'on':''}" onclick="toggleGuestField('${g.id}','invito')" title="${g.invito==='si'?'Invito inviato':'Invito non inviato'}">
+      <span class="status-check ${g.invito==='si'?'on':''}" onclick="toggleGuestField('${g.id}','invito')">
         ${g.invito==='si'?'✓':''}
       </span>
     </td>
     <td>
-      <span class="risposta-badge ${rispClass[g.risposta]}" onclick="cycleRisposta('${g.id}')" title="Clicca per cambiare">
+      <span class="risposta-badge ${rispClass[g.risposta]}" onclick="cycleRisposta('${g.id}')">
         ${rispLabel[g.risposta]}
       </span>
     </td>
     <td>
-      <button class="btn-edit-guest" onclick="openGuestModal('${g.id}')" title="Modifica">✎</button>
-      <button class="btn-del-guest" onclick="deleteGuest('${g.id}')" title="Elimina">🗑</button>
+      <button class="btn-edit-guest" onclick="openGuestModal('${g.id}')">✎</button>
+      <button class="btn-del-guest" onclick="deleteGuest('${g.id}')">🗑</button>
     </td>
   </tr>`;
 }
@@ -1335,8 +1761,12 @@ function renderGuestSummary() {
 }
 
 function updateTabCount() {
-  const el = document.getElementById('tab-inv-count');
-  if (el) el.textContent = (data.guests || []).length;
+  const invEl = document.getElementById('tab-inv-count');
+  if (invEl) invEl.textContent = (data.guests || []).length;
+  const fornEl = document.getElementById('tab-forn-count');
+  if (fornEl) fornEl.textContent = (data.fornitori || []).length;
+  const docEl = document.getElementById('tab-doc-count');
+  if (docEl) docEl.textContent = (data.documenti || []).length;
 }
 
 function toggleGuestField(id, field) {
@@ -1407,8 +1837,7 @@ function saveGuest() {
 
   const guestData = {
     id: existingId || 'g_' + Date.now(),
-    nome,
-    cognome,
+    nome, cognome,
     tipo: document.getElementById('modal-tipo').value,
     prob: document.getElementById('modal-prob').value,
     avvisato: document.getElementById('modal-avvisato').value,
@@ -1428,9 +1857,498 @@ function saveGuest() {
   renderGuestTable();
 }
 
-// close modal on overlay click
 document.getElementById('guest-modal').addEventListener('click', function(e) {
   if (e.target === this) closeGuestModal();
+});
+
+// ====== FORNITORI ======
+let fornFilter = 'tutti';
+
+function setFornFilter(f, btn) {
+  fornFilter = f;
+  document.querySelectorAll('.forn-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderFornitori();
+}
+
+function renderFornitori() {
+  const fornitori = data.fornitori || [];
+  const container = document.getElementById('forn-container');
+  if (!container) return;
+
+  // Summary
+  renderFornSummary();
+
+  // Group by category — only show categories that have fornitori (or all if filter active)
+  const catsWithForn = FORN_CATEGORIE.filter(cat => {
+    return fornitori.some(f => f.categoria === cat.id);
+  });
+
+  // Also always show all categories when there are no fornitori at all
+  const catsToShow = fornitori.length === 0 ? [] : catsWithForn;
+
+  if (fornitori.length === 0) {
+    container.innerHTML = `<div class="doc-empty">
+      <span class="doc-empty-icon">🤝</span>
+      <strong>Nessun fornitore ancora</strong><br>
+      <span style="font-size:13px;margin-top:6px;display:block">Aggiungi i tuoi candidati per confrontarli e tenere traccia dei preventivi.</span>
+    </div>`;
+    return;
+  }
+
+  let html = '';
+  catsToShow.forEach(cat => {
+    const catForn = fornitori.filter(f => {
+      if (f.categoria !== cat.id) return false;
+      if (fornFilter === 'selezionato') return f.stato === 'selezionato' || f.stato === 'contratto';
+      if (fornFilter === 'contratto') return f.stato === 'contratto';
+      if (fornFilter === 'in-valutazione') return f.stato === 'valutazione' || f.stato === 'contattato' || f.stato === 'preventivo';
+      return true;
+    });
+    if (catForn.length === 0) return;
+
+    const selezionato = catForn.find(f => f.stato === 'selezionato' || f.stato === 'contratto');
+    html += `<div class="forn-cat-section">
+      <div class="forn-cat-header">
+        <span class="forn-cat-emoji">${cat.emoji}</span>
+        <span class="forn-cat-title">${cat.label}</span>
+        <span class="forn-cat-count">${catForn.length}</span>
+        ${selezionato ? `<span class="forn-cat-selected">✓ ${selezionato.nome}</span>` : ''}
+        <div class="forn-cat-spacer"></div>
+        <button class="forn-btn" onclick="openFornModal(null,'${cat.id}')" style="font-size:12px">+ Aggiungi</button>
+      </div>
+      <div class="forn-cards">
+        ${catForn.map(f => buildFornCard(f)).join('')}
+      </div>
+    </div>`;
+  });
+
+  container.innerHTML = html || `<div style="text-align:center;padding:32px;color:var(--text-muted)">Nessun fornitore corrisponde al filtro selezionato.</div>`;
+}
+
+function buildFornCard(f) {
+  const statoClass = {
+    valutazione:'stato-valutazione', contattato:'stato-contattato',
+    preventivo:'stato-preventivo', selezionato:'stato-selezionato',
+    contratto:'stato-contratto', escluso:'stato-escluso'
+  };
+  const statoLabel = {
+    valutazione:'In valutazione', contattato:'Contattato',
+    preventivo:'Preventivo ricevuto', selezionato:'✓ Selezionato',
+    contratto:'✓ Contratto firmato', escluso:'✗ Escluso'
+  };
+
+  const totale = calcFornTotale(f);
+  const nGuests = getTotalGuests();
+  let prezzoDetail = '';
+  if (f.tipoPrezzo === 'persona' && parseNum(f.importo) > 0) {
+    prezzoDetail = `${fmt(parseNum(f.importo))}/persona × ${nGuests} inv.`;
+  } else if (f.tipoPrezzo === 'unita' && parseNum(f.importo) > 0) {
+    prezzoDetail = `${fmt(parseNum(f.importo))}/unità × ${f.qty || 1}`;
+  }
+
+  const stars = [1,2,3,4,5].map(i =>
+    `<span class="forn-star ${(f.rating||0)>=i?'on':''}" onclick="setRating('${f.id}',${i})">★</span>`
+  ).join('');
+
+  const isSelected = f.stato === 'selezionato' || f.stato === 'contratto';
+  const isEscluso = f.stato === 'escluso';
+
+  const contatti = [f.tel, f.email].filter(Boolean).join(' · ');
+
+  return `<div class="forn-card ${isSelected?'selezionato':''} ${isEscluso?'escluso':''}" id="forn-card-${f.id}">
+    ${isSelected ? '<div class="forn-selected-badge">SELEZIONATO</div>' : ''}
+    <div class="forn-card-header">
+      <div>
+        <div class="forn-card-nome">${f.nome}</div>
+        ${contatti ? `<div class="forn-card-contatto">${contatti}</div>` : ''}
+      </div>
+      <span class="forn-stato-badge ${statoClass[f.stato]}">${statoLabel[f.stato]}</span>
+    </div>
+    <div class="forn-card-divider"></div>
+    <div class="forn-card-body">
+      <div class="forn-price-row">
+        <div class="forn-price-box">
+          <span class="forn-price-lbl">Preventivo</span>
+          <span class="forn-price-val gold">${totale > 0 ? fmt(totale) : '—'}</span>
+          ${prezzoDetail ? `<span class="forn-price-sub">${prezzoDetail}</span>` : ''}
+        </div>
+        <div class="forn-price-box">
+          <span class="forn-price-lbl">Acconto</span>
+          <span class="forn-price-val ${f.accontoPagato==='si'?'sage':'rose'}">${parseNum(f.acconto)>0 ? fmt(parseNum(f.acconto)) : '—'}</span>
+          <span class="forn-price-sub">${f.accontoPagato==='si'?'✓ Versato':'Da versare'}</span>
+        </div>
+      </div>
+      <div class="forn-rating">${stars}</div>
+      ${f.note ? `<div class="forn-note">${f.note}</div>` : '<div class="forn-note forn-note-empty">Nessuna nota</div>'}
+      <div class="forn-card-actions">
+        ${f.sito ? `<button class="forn-btn" onclick="window.open('${f.sito}','_blank')">🔗 Sito</button>` : ''}
+        <button class="forn-btn" onclick="openFornModal('${f.id}')">✎ Modifica</button>
+        ${!isSelected ? `<button class="forn-btn sage-btn" onclick="selezionaFornitore('${f.id}')">✓ Seleziona</button>` : ''}
+        <button class="forn-btn danger" onclick="deleteFornitore('${f.id}')">🗑</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderFornSummary() {
+  const fornitori = data.fornitori || [];
+  const total = fornitori.length;
+  const selezionati = fornitori.filter(f => f.stato === 'selezionato' || f.stato === 'contratto').length;
+  const contratti = fornitori.filter(f => f.stato === 'contratto').length;
+  const totalPreventivi = fornitori
+    .filter(f => f.stato === 'selezionato' || f.stato === 'contratto')
+    .reduce((s, f) => s + calcFornTotale(f), 0);
+
+  const el = document.getElementById('forn-summary');
+  if (!el) return;
+  el.innerHTML = `
+    <div class="forn-sum-card"><span class="forn-sum-num">${total}</span><span class="forn-sum-label">Fornitori totali</span></div>
+    <div class="forn-sum-card"><span class="forn-sum-num sage">${selezionati}</span><span class="forn-sum-label">Selezionati</span></div>
+    <div class="forn-sum-card"><span class="forn-sum-num rose">${contratti}</span><span class="forn-sum-label">Contratti firmati</span></div>
+    <div class="forn-sum-card"><span class="forn-sum-num gold">${totalPreventivi > 0 ? fmt(totalPreventivi) : '—'}</span><span class="forn-sum-label">Budget selezionati</span></div>
+    <div class="forn-sum-card"><span class="forn-sum-num">${getTotalGuests()}</span><span class="forn-sum-label">Invitati (base calcolo)</span></div>
+  `;
+}
+
+function setRating(id, val) {
+  const f = (data.fornitori || []).find(x => x.id === id);
+  if (!f) return;
+  f.rating = f.rating === val ? 0 : val; // toggle off if same
+  save();
+  renderFornitori();
+}
+
+function selezionaFornitore(id) {
+  const f = (data.fornitori || []).find(x => x.id === id);
+  if (!f) return;
+  // Deselect others in same category (optional UX: warn user)
+  const others = (data.fornitori || []).filter(x => x.categoria === f.categoria && x.id !== id && (x.stato === 'selezionato'));
+  if (others.length > 0) {
+    const ok = confirm(`Hai già selezionato "${others[0].nome}" per questa categoria. Vuoi sostituirlo?`);
+    if (!ok) return;
+    others.forEach(o => o.stato = 'valutazione');
+  }
+  f.stato = 'selezionato';
+
+  // Propaga budget ad attività
+  const catConf = getFornCatConfig(f.categoria);
+  if (catConf && catConf.actCatId) {
+    const totale = calcFornTotale(f);
+    if (totale > 0) {
+      propagaBudgetToActivity(catConf.actCatId, totale, f.nome);
+    }
+  }
+
+  save();
+  renderFornitori();
+  render(); // aggiorna tab attività
+}
+
+function propagaBudgetToActivity(actCatId, totale, fornNome) {
+  const cat = data.categories.find(c => c.id === actCatId);
+  if (!cat || cat.tasks.length === 0) return;
+  // Scrivi il totale sul primo task della categoria che ha budget vuoto,
+  // o sul primo task in assoluto
+  const targetTask = cat.tasks.find(t => !t.budget || parseNum(t.budget) === 0) || cat.tasks[0];
+  targetTask.budget = String(totale);
+  // Aggiungi nota automatica
+  if (fornNome && !targetTask.notes.includes(fornNome)) {
+    targetTask.notes = (targetTask.notes ? targetTask.notes + '\n' : '') + `Fornitore selezionato: ${fornNome} — ${fmt(totale)}`;
+  }
+}
+
+function deleteFornitore(id) {
+  if (!confirm('Eliminare questo fornitore?')) return;
+  data.fornitori = (data.fornitori || []).filter(f => f.id !== id);
+  save();
+  renderFornitori();
+  updateTabCount();
+}
+
+// ====== FORNITORE MODAL ======
+function openFornModal(id, presetCat) {
+  const modal = document.getElementById('forn-modal');
+  document.getElementById('forn-modal-title').textContent = id ? '✎ Modifica fornitore' : '✦ Aggiungi fornitore';
+  document.getElementById('forn-modal-id').value = id || '';
+
+  if (id) {
+    const f = (data.fornitori || []).find(x => x.id === id);
+    if (f) {
+      document.getElementById('forn-nome').value = f.nome || '';
+      document.getElementById('forn-categoria').value = f.categoria || 'location';
+      document.getElementById('forn-tel').value = f.tel || '';
+      document.getElementById('forn-email').value = f.email || '';
+      document.getElementById('forn-sito').value = f.sito || '';
+      document.getElementById('forn-stato').value = f.stato || 'valutazione';
+      document.getElementById('forn-tipo-prezzo').value = f.tipoPrezzo || 'fisso';
+      document.getElementById('forn-importo').value = f.importo || '';
+      document.getElementById('forn-qty').value = f.qty || '';
+      document.getElementById('forn-acconto').value = f.acconto || '';
+      document.getElementById('forn-acconto-pagato').value = f.accontoPagato || 'no';
+      document.getElementById('forn-note').value = f.note || '';
+    }
+  } else {
+    document.getElementById('forn-nome').value = '';
+    document.getElementById('forn-categoria').value = presetCat || 'location';
+    document.getElementById('forn-tel').value = '';
+    document.getElementById('forn-email').value = '';
+    document.getElementById('forn-sito').value = '';
+    document.getElementById('forn-stato').value = 'valutazione';
+    document.getElementById('forn-tipo-prezzo').value =
+      presetCat ? (getFornCatConfig(presetCat).tipoDefault || 'fisso') : 'fisso';
+    document.getElementById('forn-importo').value = '';
+    document.getElementById('forn-qty').value = '';
+    document.getElementById('forn-acconto').value = '';
+    document.getElementById('forn-acconto-pagato').value = 'no';
+    document.getElementById('forn-note').value = '';
+  }
+
+  aggiornaPrezzoCalc();
+  modal.classList.add('open');
+  setTimeout(() => document.getElementById('forn-nome').focus(), 100);
+}
+
+function closeFornModal() {
+  document.getElementById('forn-modal').classList.remove('open');
+}
+
+function aggiornaPrezzoCalc() {
+  const tipo = document.getElementById('forn-tipo-prezzo').value;
+  const imp = parseNum(document.getElementById('forn-importo').value);
+  const qtyField = document.getElementById('forn-qty-field');
+  const calcBox = document.getElementById('prezzo-calc-box');
+  const propagaWrap = document.getElementById('forn-propaga-wrap');
+
+  qtyField.style.display = tipo === 'unita' ? 'block' : 'none';
+  calcBox.classList.toggle('visible', tipo !== 'fisso' && imp > 0);
+  propagaWrap.style.display = (tipo !== 'fisso' || imp > 0) ? 'block' : 'none';
+
+  if (tipo === 'persona' && imp > 0) {
+    const n = getTotalGuests();
+    const tot = imp * n;
+    document.getElementById('prezzo-calc-value').textContent = fmt(tot);
+    document.getElementById('prezzo-calc-detail').textContent =
+      `${fmt(imp)}/persona × ${n} invitati totali`;
+  } else if (tipo === 'unita' && imp > 0) {
+    const qty = parseNum(document.getElementById('forn-qty').value) || 1;
+    const tot = imp * qty;
+    document.getElementById('prezzo-calc-value').textContent = fmt(tot);
+    document.getElementById('prezzo-calc-detail').textContent = `${fmt(imp)}/unità × ${qty}`;
+  }
+}
+
+function saveFornitore() {
+  const nome = document.getElementById('forn-nome').value.trim();
+  if (!nome) { document.getElementById('forn-nome').focus(); return; }
+
+  if (!data.fornitori) data.fornitori = [];
+  const existingId = document.getElementById('forn-modal-id').value;
+  const categoria = document.getElementById('forn-categoria').value;
+  const tipoPrezzo = document.getElementById('forn-tipo-prezzo').value;
+  const stato = document.getElementById('forn-stato').value;
+
+  const fData = {
+    id: existingId || 'f_' + Date.now(),
+    nome,
+    categoria,
+    tel: document.getElementById('forn-tel').value.trim(),
+    email: document.getElementById('forn-email').value.trim(),
+    sito: document.getElementById('forn-sito').value.trim(),
+    stato,
+    tipoPrezzo,
+    importo: document.getElementById('forn-importo').value,
+    qty: document.getElementById('forn-qty').value,
+    acconto: document.getElementById('forn-acconto').value,
+    accontoPagato: document.getElementById('forn-acconto-pagato').value,
+    note: document.getElementById('forn-note').value.trim(),
+    rating: existingId ? ((data.fornitori.find(f=>f.id===existingId)||{}).rating||0) : 0,
+  };
+
+  // Se stato = selezionato e checkbox propaga è attiva → propaga budget
+  const propaga = document.getElementById('forn-propaga').checked;
+  const catConf = getFornCatConfig(categoria);
+  if ((stato === 'selezionato' || stato === 'contratto') && propaga && catConf && catConf.actCatId) {
+    const totale = calcFornTotale(fData);
+    if (totale > 0) propagaBudgetToActivity(catConf.actCatId, totale, nome);
+  }
+
+  if (existingId) {
+    const idx = data.fornitori.findIndex(f => f.id === existingId);
+    if (idx >= 0) data.fornitori[idx] = fData;
+  } else {
+    data.fornitori.push(fData);
+  }
+
+  save();
+  closeFornModal();
+  renderFornitori();
+  render();
+  updateTabCount();
+}
+
+document.getElementById('forn-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeFornModal();
+});
+
+// ====== DOCUMENTI ======
+let docFilter = 'tutti';
+
+function setDocFilter(f, btn) {
+  docFilter = f;
+  document.querySelectorAll('.doc-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderDocumenti();
+}
+
+function renderDocumenti() {
+  const documenti = data.documenti || [];
+  const grid = document.getElementById('doc-grid');
+  if (!grid) return;
+
+  const filtered = documenti.filter(d => docFilter === 'tutti' || d.tipo === docFilter);
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="doc-empty" style="grid-column:1/-1">
+      <span class="doc-empty-icon">📁</span>
+      <strong>${documenti.length === 0 ? 'Nessun documento ancora' : 'Nessun documento in questa categoria'}</strong><br>
+      <span style="font-size:13px;margin-top:6px;display:block">Aggiungi preventivi, contratti, ricevute e link a materiali di ispirazione.</span>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(d => buildDocCard(d)).join('');
+  updateTabCount();
+}
+
+function buildDocCard(d) {
+  const tipoClass = {
+    preventivo:'tipo-preventivo', contratto:'tipo-contratto',
+    ricevuta:'tipo-ricevuta', ispirazione:'tipo-ispirazione', altro:'tipo-altro'
+  };
+  const tipoLabel = {
+    preventivo:'Preventivo', contratto:'Contratto',
+    ricevuta:'Ricevuta', ispirazione:'Ispirazione', altro:'Altro'
+  };
+  const tipoIcon = {
+    preventivo:'📄', contratto:'📝', ricevuta:'🧾', ispirazione:'💡', altro:'📎'
+  };
+
+  // Trova nome fornitore associato
+  const forn = d.fornitoreId ? (data.fornitori||[]).find(f => f.id === d.fornitoreId) : null;
+  const fornLabel = forn ? forn.nome : (d.categoriaLabel || '');
+
+  const dataFormatted = d.data ? new Date(d.data).toLocaleDateString('it-IT',{day:'numeric',month:'short',year:'numeric'}) : '';
+
+  return `<div class="doc-card" id="doc-card-${d.id}">
+    <div class="doc-card-top">
+      <span class="doc-icon">${tipoIcon[d.tipo]||'📎'}</span>
+      <div style="flex:1">
+        <div class="doc-nome">${d.nome}</div>
+        <span class="doc-tipo-badge ${tipoClass[d.tipo]}">${tipoLabel[d.tipo]}</span>
+      </div>
+    </div>
+    <div class="doc-meta">
+      ${fornLabel ? `<span class="doc-fornitore-tag">🏷 ${fornLabel}</span>` : ''}
+      ${dataFormatted ? `<span>📅 ${dataFormatted}</span>` : ''}
+      ${parseNum(d.importo) > 0 ? `<span>💰 ${fmt(parseNum(d.importo))}</span>` : ''}
+    </div>
+    ${d.note ? `<div class="doc-note">${d.note}</div>` : ''}
+    <div class="doc-actions">
+      ${d.link ? `<button class="doc-btn" onclick="window.open('${d.link}','_blank')">🔗 Apri</button>` : ''}
+      <button class="doc-btn" onclick="openDocModal('${d.id}')">✎ Modifica</button>
+      <button class="doc-btn danger" onclick="deleteDocumento('${d.id}')">🗑</button>
+    </div>
+  </div>`;
+}
+
+function deleteDocumento(id) {
+  if (!confirm('Eliminare questo documento?')) return;
+  data.documenti = (data.documenti || []).filter(d => d.id !== id);
+  save();
+  renderDocumenti();
+  updateTabCount();
+}
+
+// ====== DOCUMENTO MODAL ======
+function openDocModal(id) {
+  const modal = document.getElementById('doc-modal');
+  document.getElementById('doc-modal-title').textContent = id ? '✎ Modifica documento' : '📁 Aggiungi documento';
+  document.getElementById('doc-modal-id').value = id || '';
+
+  // Popola select fornitori
+  const sel = document.getElementById('doc-fornitore');
+  sel.innerHTML = '<option value="">— Nessun fornitore —</option>';
+  (data.fornitori || []).forEach(f => {
+    const cat = getFornCatConfig(f.categoria);
+    const opt = document.createElement('option');
+    opt.value = f.id;
+    opt.textContent = `${cat.emoji} ${f.nome}`;
+    sel.appendChild(opt);
+  });
+
+  if (id) {
+    const d = (data.documenti || []).find(x => x.id === id);
+    if (d) {
+      document.getElementById('doc-nome').value = d.nome || '';
+      document.getElementById('doc-tipo').value = d.tipo || 'preventivo';
+      document.getElementById('doc-fornitore').value = d.fornitoreId || '';
+      document.getElementById('doc-link').value = d.link || '';
+      document.getElementById('doc-data').value = d.data || '';
+      document.getElementById('doc-importo').value = d.importo || '';
+      document.getElementById('doc-note').value = d.note || '';
+    }
+  } else {
+    document.getElementById('doc-nome').value = '';
+    document.getElementById('doc-tipo').value = 'preventivo';
+    document.getElementById('doc-fornitore').value = '';
+    document.getElementById('doc-link').value = '';
+    document.getElementById('doc-data').value = new Date().toISOString().split('T')[0];
+    document.getElementById('doc-importo').value = '';
+    document.getElementById('doc-note').value = '';
+  }
+
+  modal.classList.add('open');
+  setTimeout(() => document.getElementById('doc-nome').focus(), 100);
+}
+
+function closeDocModal() {
+  document.getElementById('doc-modal').classList.remove('open');
+}
+
+function saveDocumento() {
+  const nome = document.getElementById('doc-nome').value.trim();
+  if (!nome) { document.getElementById('doc-nome').focus(); return; }
+
+  if (!data.documenti) data.documenti = [];
+  const existingId = document.getElementById('doc-modal-id').value;
+
+  const dData = {
+    id: existingId || 'd_' + Date.now(),
+    nome,
+    tipo: document.getElementById('doc-tipo').value,
+    fornitoreId: document.getElementById('doc-fornitore').value,
+    link: document.getElementById('doc-link').value.trim(),
+    data: document.getElementById('doc-data').value,
+    importo: document.getElementById('doc-importo').value,
+    note: document.getElementById('doc-note').value.trim(),
+  };
+
+  if (existingId) {
+    const idx = data.documenti.findIndex(d => d.id === existingId);
+    if (idx >= 0) data.documenti[idx] = dData;
+  } else {
+    data.documenti.push(dData);
+  }
+
+  save();
+  closeDocModal();
+  renderDocumenti();
+  updateTabCount();
+}
+
+document.getElementById('doc-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeDocModal();
 });
 
 // ====== INIT ======
